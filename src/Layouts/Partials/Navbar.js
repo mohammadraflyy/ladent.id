@@ -20,7 +20,7 @@ const Navbar = ({ title }) => {
   };
 
   return (
-    <nav className="bg-gray-800 p-5">
+    <nav className="bg-gray-800 p-5 sticky top-0">
       <div className="md:px-20 px-5 flex justify-between items-center">
         <Link to="/home" className="flex items-center text-white text-xl font-bold">
           <img src="/logo.png" alt="Logo" className="w-8 h-8 mr-2" />

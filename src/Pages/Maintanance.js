@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import '../App.css';
 
 function Maintenance() {
@@ -15,7 +16,7 @@ function Maintenance() {
                 <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
                     We are currently performing scheduled maintenance. Please check back later.
                 </p>
-                <div className="flex items-center justify-center">
+                <div className="flex items-center justify-center mb-8">
                     <div>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -26,13 +27,16 @@ function Maintenance() {
                             className="w-8 h-8 mx-auto text-gray-700 dark:text-gray-300 animate-pulse"
                         >
                             <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"
                             />
                         </svg>
                     </div>
                 </div>
+                <Link to="/home" className="inline-block px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition">
+                    Back to Home
+                </Link>
             </div>
         </main>
     );

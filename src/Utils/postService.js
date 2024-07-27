@@ -24,3 +24,39 @@ export const fetchAllPosts = async () => {
         throw new Error(errorMessage);
     }
 };
+
+export const fetchSearchPost = async (query) => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/posts/search/${encodeURIComponent(query)}`);
+        const data = await response.json();
+
+        if (!data.success) {
+            throw new Error(data.message || 'Error fetching posts');
+        }
+
+        return data.data || [];
+    } catch (error) {
+        const errorMessage = error.response ? error.response.data.message : error.message;
+        console.error("Error fetching posts:", errorMessage);
+        throw new Error(errorMessage);
+    }
+};
+
+export const fetchPostByYear = async (year) => {
+    try {
+        const response = await fetch(`${API_BASE_URL}/api/posts/archive/${year}`);
+        const data = await response.json();
+
+        if (!data.success) {
+            throw new Error(data.message || 'Error fetching posts');
+        }
+
+        return data.data || [];
+    } catch (error) {
+        const errorMessage = error.response ? error.response.data.message : error.message;
+        console.error("Error fetching posts:", errorMessage);
+        throw new Error(errorMessage);
+    }
+};
+
+

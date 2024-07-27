@@ -1,12 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.css';
 import Navbar from './Partials/Navbar';
 import Footer from './Partials/Footer';
 import Sidebar from './Partials/Sidebar';
+import { fetchAllPosts } from '../Utils/postService';
 
 function AppLayouts({ title, children, postCountByYear }) {
+    const [posts, setPosts] = useState([]);
+
     useEffect(() => {
         document.title = `LADENT ENTERTAINMENT | ${title}`;
+        const fetchPosts = async () => {
+            try {
+                const fetchedPosts = await fetchAllPosts();
+                setPosts(fetchedPosts);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchPosts();
     }, [title]);
 
     return (
@@ -25,7 +38,7 @@ function AppLayouts({ title, children, postCountByYear }) {
                 </div>
                 {title === "Home" && (
                     <div className="md:px-5 md:mt-0">
-                        <Sidebar postCountByYear={postCountByYear} />
+                        <Sidebar postCountByYear={postCountByYear} posts={posts} />
                     </div>
                 )}
             </div>
