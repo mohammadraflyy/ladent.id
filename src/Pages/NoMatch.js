@@ -27,7 +27,7 @@ function NoMatch() {
                         </svg>
                     </div>
                 </div>
-                <Link to="/home" className="inline-block px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition">
+                <Link to="/home" className="inline-block px-4 py-2 bg-gray-500 text-white font-semibold rounded-lg shadow-md hover:bg-gray-600 transition">
                     Back to Home
                 </Link>
             </div>

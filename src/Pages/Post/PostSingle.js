@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { API_BASE_URL, fetchPostBySlug } from '../../Utils/postService';
+import { API_BASE_URL, fetchAllPosts, fetchPostBySlug } from '../../Utils/postService';
 import AppLayouts from '../../Layouts/AppLayouts';
 import PostLoadingSingle from './PostLoadingSingle';
+import PostRecommended from './PostRecommended';
 
 const PostSingle = () => {
   const { slug } = useParams();
   const [post, setPost] = useState(null);
+  const [postRecommended, setPostRecommended] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -27,12 +29,21 @@ const PostSingle = () => {
         }
       } catch (err) {
         setError(err.message || "An unexpected error occurred");
-      } finally {
-        setLoading(false);
+      }
+    };
+
+    const fetchRecommended = async () => {
+      try {
+        const response = await fetchAllPosts();
+        setPostRecommended(response.data || []);
+      } catch (err) {
+        console.error(err.message || "An error occurred while fetching recommended posts.");
       }
     };
 
     fetchPost();
+    fetchRecommended();
+    setLoading(false);
   }, [slug]);
 
   if (loading) {
@@ -56,9 +67,7 @@ const PostSingle = () => {
   if (!post) {
     return (
       <AppLayouts title={null}>
-        <div className="mx-auto container bg-gray-900 text-white rounded-lg py-10">
-          <p className="text-center text-white">Post not found</p>
-        </div>
+        <PostLoadingSingle />
       </AppLayouts>
     );
   }
@@ -86,6 +95,7 @@ const PostSingle = () => {
           <p>{content}</p>
         </div>
       </article>
+      <PostRecommended posts={postRecommended}/>
     </AppLayouts>
   );
 };

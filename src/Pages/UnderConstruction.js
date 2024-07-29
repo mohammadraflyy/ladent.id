@@ -1,20 +1,20 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link } from 'react-router-dom';
 import '../App.css';
 
-function Maintenance() {
+function UnderConstruction() {
     useEffect(() => {
-        document.title = 'Under Maintenance';
+        document.title = 'Under Construction';
     }, []);
 
     return (
         <main className="flex min-h-screen flex-col items-center justify-center p-24 bg-gray-100 dark:bg-gray-900">
             <div className="max-w-2xl w-full text-center">
                 <h1 className="text-4xl font-bold mb-4 text-gray-800 dark:text-gray-200">
-                    Website Under Maintenance
+                    Site Under Construction
                 </h1>
                 <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
-                    We are currently performing scheduled maintenance. Please check back later.
+                    We are working hard to bring you a new experience. Stay tuned!
                 </p>
                 <div className="flex items-center justify-center mb-8">
                     <div>
@@ -42,4 +42,4 @@ function Maintenance() {
     );
 }
 
-export default Maintenance;
+export default UnderConstruction;

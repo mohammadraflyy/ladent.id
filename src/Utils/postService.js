@@ -4,7 +4,6 @@ const API_BASE_URL = 'http://localhost:8000';
 
 export { API_BASE_URL };
 
-console.log(process.env.BASE_URL)
 export const fetchPostBySlug = async (slug) => {
     try {
         const response = await axios.get(`${API_BASE_URL}/api/posts/${slug}`);
@@ -61,4 +60,13 @@ export const fetchPostByYear = async (year) => {
     }
 };
 
-
+export const fetchArtists = async () => {
+    try {
+        const response = await axios.get(`${API_BASE_URL}/api/artists`);
+        return response.data;
+    } catch (error) {
+        const errorMessage = error.response ? error.response.data.message : error.message;
+        console.error("Error fetching artists:", errorMessage);
+        throw new Error(errorMessage);
+    }
+};
