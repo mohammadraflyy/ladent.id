@@ -2,9 +2,11 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { initializeStars, drawStars } from '../Utils/starsUtils';
 import '../App.css';
+import SEO from '../Components/SEO';
 
 function LandingPage() {
     const canvasRef = useRef(null);
+    const title = 'Landing Page';
 
     useEffect(() => {
         document.title = 'LADENT ENTERTAINMENT';
@@ -30,6 +32,7 @@ function LandingPage() {
 
     return (
         <main className="relative flex min-h-screen flex-col items-center justify-center p-4 sm:p-6 md:p-8 lg:p-24 bg-gray-100 dark:bg-gray-900">
+            <SEO title={title} description='Landing page for ladent.id' />
             <canvas ref={canvasRef} className="absolute top-0 left-0 z-0" />
             <div className="relative max-w-xl w-full text-center">
                 <img src="/logo.png" alt="LADENT ENTERTAINMENT Logo" className="mb-4 mx-auto py-6 sm:py-8 lg:py-10" width={200} height={200}/>

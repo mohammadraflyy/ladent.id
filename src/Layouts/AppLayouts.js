@@ -10,9 +10,9 @@ function AppLayouts({ title, children, postCountByYear }) {
 
     useEffect(() => {
         if (title) {
-            document.title = `LADENT ENTERTAINMENT | ${title}`;
+            document.title = `LADON ENTERTAINMENT | ${title}`;
         } else {
-            document.title = 'LADENT ENTERTAINMENT';
+            document.title = 'LADON ENTERTAINMENT';
         }
         
         const fetchPosts = async () => {
@@ -37,12 +37,12 @@ function AppLayouts({ title, children, postCountByYear }) {
                     </div>
                 </div>
             )}
-            <div className="flex-grow flex flex-col md:flex-row md:px-20 px-10">
+            <div className="flex-grow flex flex-col xl:flex-row md:px-20 px-10">
                 <div className="flex-grow md:px-5">
                     {children}
                 </div>
                 {title === "Home" && (
-                    <div className="md:px-5 md:mt-0">
+                    <div className="md:px-5 md:mt-0 py-10 xl:py-0">
                         <Sidebar postCountByYear={postCountByYear} posts={posts} />
                     </div>
                 )}

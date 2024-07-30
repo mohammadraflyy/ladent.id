@@ -23,7 +23,7 @@ const Navbar = ({ title }) => {
     <nav className="bg-gray-800 py-4 sticky top-0 shadow-lg">
       <div className="px-5 flex justify-between items-center">
         <Link to="/home" className="flex items-center text-gray-100 text-lg lg:text-2xl font-bold">
-          <img src="/logo.png" alt="Logo" className="w-8 h-8 mr-2" />
+          <img src="/logo.webp" alt="Logo" className="w-8 h-8 mr-2" />
           {title}
         </Link>
         <div className="hidden md:flex items-center space-x-5 relative text-lg font-bold">

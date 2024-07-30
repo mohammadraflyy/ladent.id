@@ -21,7 +21,7 @@ const Sidebar = ({ postCountByYear, posts }) => {
   const years = Object.keys(postCountByYear).sort(); 
 
   return (
-    <div className="w-full md:w-96 bg-gray-800 text-white flex-shrink-0 p-4 my-10 sm:my-0 rounded-lg">
+    <div className="w-full xl:w-96 bg-gray-800 text-white flex-shrink-0 p-4 my-10 sm:my-0 rounded-lg">
       <div className="mb-4 flex items-center bg-gray-700 rounded-xl">
         <MagnifyingGlassIcon className="h-5 w-5 text-gray-400 ml-3" />
         <input

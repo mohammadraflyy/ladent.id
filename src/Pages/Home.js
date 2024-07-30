@@ -4,12 +4,14 @@ import AppLayouts from '../Layouts/AppLayouts';
 import PostList from './Post/PostList';
 import { fetchAllPosts } from '../Utils/postService';
 import PostLoading from './Post/PostLoading';
+import SEO from '../Components/SEO';
 
 function Home() {
     const [posts, setPosts] = useState([]);
     const [postCountByYear, setPostCountByYear] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const title = 'Home';
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -37,7 +39,8 @@ function Home() {
     }, []);
 
     return (
-        <AppLayouts title="Home" postCountByYear={postCountByYear}>
+        <AppLayouts title={title} postCountByYear={postCountByYear}>
+            <SEO title={title} description='Home page for ladent.id' />
             {loading ? (
                 <PostLoading />
             ) : error ? (
