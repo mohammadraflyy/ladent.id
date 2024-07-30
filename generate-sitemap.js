@@ -1,7 +1,9 @@
 const { SitemapStream, streamToPromise } = require('sitemap');
-const { createWriteStream } = require('fs');
-const smStream = new SitemapStream({ hostname: 'https://ladent.id' });
 const fs = require('fs');
+
+const baseUrl = 'https://ladent.id';
+
+const smStream = new SitemapStream({ hostname: baseUrl });
 
 const links = [
   { url: '/', changefreq: 'daily', priority: 1.0 },
@@ -22,4 +24,6 @@ smStream.end();
 
 streamToPromise(smStream).then(sm => {
   fs.writeFileSync('./public/sitemap.xml', sm.toString());
+}).catch(err => {
+  console.error('Error generating sitemap:', err);
 });
