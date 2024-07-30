@@ -8,7 +8,7 @@ const Sidebar = ({ postCountByYear, posts }) => {
   const navigate = useNavigate();
 
   const handleSearch = (query) => {
-    const searchUrl = `/search?query=${encodeURIComponent(query)}`;
+    const searchUrl = `/posts/search?query=${encodeURIComponent(query)}`;
     navigate(searchUrl);
   };
 
@@ -36,7 +36,7 @@ const Sidebar = ({ postCountByYear, posts }) => {
       <ul className="space-y-2">
         {years.map(year => (
           <li key={year}>
-            <Link to={`/archive/${year}`} className="flex justify-between items-center text-gray-100 font-semibold py-2 px-4 rounded-xl hover:bg-gray-700">
+            <Link to={`/posts/archive/${year}`} className="flex justify-between items-center text-gray-100 font-semibold py-2 px-4 rounded-xl hover:bg-gray-700">
               <span>Archive {year} ({postCountByYear[year] || 0})</span>
               <ChevronRightIcon className="w-4 h-4" />
             </Link>

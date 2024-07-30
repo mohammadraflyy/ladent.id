@@ -9,7 +9,12 @@ function AppLayouts({ title, children, postCountByYear }) {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
-        document.title = `LADENT ENTERTAINMENT | ${title}`;
+        if (title) {
+            document.title = `LADENT ENTERTAINMENT | ${title}`;
+        } else {
+            document.title = 'LADENT ENTERTAINMENT';
+        }
+        
         const fetchPosts = async () => {
             try {
                 const fetchedPosts = await fetchAllPosts();
@@ -24,7 +29,7 @@ function AppLayouts({ title, children, postCountByYear }) {
 
     return (
         <main className="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-900">
-            <Navbar title="LADENT ENTERTAINMENT" />
+            <Navbar title="LADON ENTERTAINMENT" />
             {title != null && (
                 <div className="px-10 py-2 md:px-20 md:py-5">
                     <div className="md:px-5 text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
@@ -42,7 +47,7 @@ function AppLayouts({ title, children, postCountByYear }) {
                     </div>
                 )}
             </div>
-            <Footer title="LADENT ENTERTAINMENT" />
+            <Footer title="LADON ENTERTAINMENT" />
         </main>
     );
 }

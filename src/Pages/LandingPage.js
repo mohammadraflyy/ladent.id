@@ -33,9 +33,6 @@ function LandingPage() {
             <canvas ref={canvasRef} className="absolute top-0 left-0 z-0" />
             <div className="relative max-w-xl w-full text-center">
                 <img src="/logo.png" alt="LADENT ENTERTAINMENT Logo" className="mb-4 mx-auto py-6 sm:py-8 lg:py-10" width={200} height={200}/>
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-gray-800 dark:text-gray-200">
-                    LADENT ENTERTAINMENT
-                </h1>
                 <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 mb-8">
                     EVENT MANAGEMENT | MEDIA PLANNER | BRAND ACTIVATION | PRODUCTION
                 </p>
