@@ -125,7 +125,7 @@ const Navbar = ({ title }) => {
             )}
           </button>
         </div>
-        <div className="md:hidden flex gap-5">
+        <div className="md:hidden flex gap-2">
           <button
             onClick={toggleDarkMode}
             aria-label={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
