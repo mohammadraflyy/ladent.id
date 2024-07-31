@@ -5,6 +5,8 @@ import PostList from './Post/PostList';
 import { fetchAllPosts } from '../Utils/postService';
 import PostLoading from './Post/PostLoading';
 import SEO from '../Components/SEO';
+import PostGrid from './Post/PostGrid';
+import PostLoadingGrid from './Post/PostLoadingGrid';
 
 function Home() {
     const [posts, setPosts] = useState([]);
@@ -42,11 +44,17 @@ function Home() {
         <AppLayouts title={title} postCountByYear={postCountByYear}>
             <SEO title={title} description='Home page for ladent.id' />
             {loading ? (
-                <PostLoading />
+                <>
+                    <PostLoadingGrid />
+                    <PostLoading />
+                </>
             ) : error ? (
                 <p>{error}</p>
             ) : (
-                <PostList posts={posts} />
+                <>
+                    <PostGrid posts={posts} />
+                    <PostList posts={posts} />
+                </>
             )}
         </AppLayouts>
     );

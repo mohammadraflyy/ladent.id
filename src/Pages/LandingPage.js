@@ -31,14 +31,27 @@ function LandingPage() {
     }, []);
 
     return (
-        <main className="relative flex min-h-screen flex-col items-center justify-center p-4 sm:p-6 md:p-8 lg:p-24 bg-gray-100 dark:bg-gray-900">
+        <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden p-4 sm:p-6 md:p-8 lg:p-24 bg-gray-100 dark:bg-gray-900">
             <SEO title={title} description='Landing page for ladent.id' />
-            <canvas ref={canvasRef} className="absolute top-0 left-0 z-0" />
-            <div className="relative max-w-xl w-full text-center">
-                <img src="/logo.png" alt="LADENT ENTERTAINMENT Logo" className="mb-4 mx-auto py-6 sm:py-8 lg:py-10" width={200} height={200}/>
-                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 dark:text-gray-400 mb-8">
-                    EVENT MANAGEMENT | MEDIA PLANNER | BRAND ACTIVATION | PRODUCTION
-                </p>
+            <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full z-0" />
+            <div className="relative w-full text-center z-10">
+                <img
+                    src="/logo.webp"
+                    alt="LADENT ENTERTAINMENT Logo"
+                    className="mb-4 mx-auto py-6 sm:py-8 lg:py-10"
+                    width={200}
+                    height={200}
+                    style={{ objectFit: 'contain' }}
+                />
+                <div className="flex flex-wrap justify-center gap-4 mb-8 text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">
+                    <span className="w-full sm:w-auto">EVENT MANAGEMENT</span>
+                    <span className="hidden md:block border-l border-gray-300 mx-2 h-6 md:h-auto" />
+                    <span className="w-full sm:w-auto">MEDIA PLANNER</span>
+                    <span className="hidden md:block border-l border-gray-300 mx-2 h-6 md:h-auto" />
+                    <span className="w-full sm:w-auto">BRAND ACTIVATION</span>
+                    <span className="hidden md:block border-l border-gray-300 mx-2 h-6 md:h-auto" />
+                    <span className="w-full sm:w-auto">PRODUCTION</span>
+                </div>
                 <div className="flex items-center justify-center">
                     <Link
                         to="home"

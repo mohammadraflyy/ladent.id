@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ChevronDownIcon, ChevronUpIcon, Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { ChevronDownIcon, ChevronUpIcon, Bars3Icon, XMarkIcon, SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 
 const Navbar = ({ title }) => {
   const [isServiceMenuOpen, setIsServiceMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(() => localStorage.getItem('darkMode') === 'true');
   const location = useLocation();
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', isDarkMode);
+    localStorage.setItem('darkMode', isDarkMode);
+  }, [isDarkMode]);
 
   const toggleServiceMenu = () => {
     setIsServiceMenuOpen(!isServiceMenuOpen);
@@ -15,21 +21,32 @@ const Navbar = ({ title }) => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const toggleDarkMode = () => {
+    setIsDarkMode(prevMode => !prevMode);
+  };
+
   const isActive = (paths) => {
-    return paths.includes(location.pathname) ? 'text-white rounded-xl bg-gray-700 px-3 py-1' : 'text-gray-300';
+    const isPathActive = paths.some(path => location.pathname.startsWith(path));
+    return isPathActive
+      ? 'text-purple-500 bg-purple-500 bg-opacity-30 px-3 py-1'
+      : '';
   };
 
   return (
-    <nav className="bg-gray-800 py-4 sticky top-0 shadow-lg">
-      <div className="px-5 flex justify-between items-center">
-        <Link to="/home" className="flex items-center text-gray-100 text-lg lg:text-2xl font-bold">
-          <img src="/logo.webp" alt="Logo" className="w-8 h-8 mr-2" />
+    <nav className={`py-2 sticky top-0 shadow-lg z-20 dark:bg-gray-800 bg-white`}>
+      <div className="px-10 flex justify-between items-center">
+        <Link to="/home" className="flex items-center text-gray-800 dark:text-gray-100 text-lg lg:text-xl font-bold">
+          <img src="/logo.webp" alt="Logo" className="w-10 h-10 mr-2" />
           {title}
         </Link>
-        <div className="hidden md:flex items-center space-x-5 relative text-lg font-bold">
-          <Link to="/home" className={`${isActive(['/home'])} hover:text-white hover:rounded-xl hover:bg-gray-700 px-3 py-1`}>
+        <div className="hidden md:flex items-center space-x-5 relative text-md font-base">
+          <Link
+            to="/home"
+            className={`${isActive(['/home'])} dark:text-white hover:text-gray-300 text-gray-900 rounded-xl hover:bg-gray-700 px-3 py-1 transition-colors duration-300`}
+          >
             Home
           </Link>
+
           <div className="relative">
             <button
               onClick={toggleServiceMenu}
@@ -39,7 +56,7 @@ const Navbar = ({ title }) => {
                 '/service/brand-activation',
                 '/service/media-planner',
                 '/service/production'
-              ])} hover:text-white hover:rounded-xl hover:bg-gray-700 px-3 py-1`}
+              ])} dark:text-white hover:text-gray-300 text-gray-900 rounded-xl hover:bg-gray-700 px-3 py-1 transition-colors duration-300`}
             >
               Service
               {isServiceMenuOpen ? (
@@ -49,31 +66,31 @@ const Navbar = ({ title }) => {
               )}
             </button>
             {isServiceMenuOpen && (
-              <div className="absolute bg-gray-700 text-white mt-2 rounded py-2 w-64">
+              <div className="absolute dark:bg-gray-700 bg-gray-200 dark:gray-300 text-black mt-2 rounded py-2 w-64">
                 <Link
                   to="/service/event-management"
-                  className={`${isActive(['/service/event-management'])} block px-4 py-2 hover:bg-gray-600`}
+                  className={`${isActive(['/service/event-management'])} hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300`}
                   onClick={() => setIsServiceMenuOpen(false)}
                 >
                   Event Management
                 </Link>
                 <Link
                   to="/service/brand-activation"
-                  className={`${isActive(['/service/brand-activation'])} block px-4 py-2 hover:bg-gray-600`}
+                  className={`${isActive(['/service/brand-activation'])} hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300`}
                   onClick={() => setIsServiceMenuOpen(false)}
                 >
                   Brand Activation
                 </Link>
                 <Link
                   to="/service/media-planner"
-                  className={`${isActive(['/service/media-planner'])} block px-4 py-2 hover:bg-gray-600`}
+                  className={`${isActive(['/service/media-planner'])} hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300`}
                   onClick={() => setIsServiceMenuOpen(false)}
                 >
                   Media Planner
                 </Link>
                 <Link
                   to="/service/production"
-                  className={`${isActive(['/service/production'])} block px-4 py-2 hover:bg-gray-600`}
+                  className={`${isActive(['/service/production'])} hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300`}
                   onClick={() => setIsServiceMenuOpen(false)}
                 >
                   Production
@@ -81,30 +98,63 @@ const Navbar = ({ title }) => {
               </div>
             )}
           </div>
-          <Link to="/artist" className={`${isActive(['/artist'])} hover:text-white hover:rounded-xl hover:bg-gray-700 px-3 py-1`}>
+
+          <Link
+            to="/artist"
+            className={`${isActive(['/artist'])} hover:text-gray-300 dark:text-white text-gray-900 rounded-xl hover:bg-gray-700 px-3 py-1 transition-colors duration-300`}
+          >
             Artist
           </Link>
-          <Link to="/contact" className={`${isActive(['/contact'])} hover:text-white hover:rounded-xl hover:bg-gray-700 px-3 py-1`}>
+
+          <Link
+            to="/contact"
+            className={`${isActive(['/contact'])} hover:text-gray-300 dark:text-white text-gray-900 rounded-xl hover:bg-gray-700 px-3 py-1 transition-colors duration-300`}
+          >
             Contact
           </Link>
+
+          <button
+            onClick={toggleDarkMode}
+            className={`hover:bg-gray-100 p-2 rounded-full transition-colors duration-300 ease-in-out 
+              dark:text-white dark:hover:text-gray-800 text-gray-800`}
+          >
+            {isDarkMode ? (
+              <SunIcon className="w-6 h-6" />
+            ) : (
+              <MoonIcon className="w-6 h-6" />
+            )}
+          </button>
         </div>
-        <button
-          onClick={toggleMobileMenu}
-          className="md:hidden text-white focus:outline-none"
-        >
-          {isMobileMenuOpen ? (
-            <XMarkIcon className="w-6 h-6" />
-          ) : (
-            <Bars3Icon className="w-6 h-6" />
-          )}
-        </button>
+        <div className="md:hidden flex gap-5">
+          <button
+            onClick={toggleDarkMode}
+            className={`hover:bg-gray-100 p-2 rounded-full transition-colors duration-300 ease-in-out 
+              dark:text-white dark:hover:text-gray-800 text-gray-800`}
+          >
+            {isDarkMode ? (
+              <SunIcon className="w-6 h-6" />
+            ) : (
+              <MoonIcon className="w-6 h-6" />
+            )}
+          </button>
+          <button
+            onClick={toggleMobileMenu}
+            className="md:hidden dark:text-white text-black focus:outline-none"
+          >
+            {isMobileMenuOpen ? (
+              <XMarkIcon className="w-6 h-6" />
+            ) : (
+              <Bars3Icon className="w-6 h-6" />
+            )}
+          </button>
+        </div>
       </div>
       <div
-        className={`md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'} bg-gray-800 text-white mt-2 rounded py-2 px-2 md:px-20`}
+        className={`md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'} dark:bg-gray-800 bg-white dark:text-gray-300 text-gray-800 mt-2 rounded py-2 px-2 md:px-20`}
       >
         <Link
           to="/home"
-          className={`${isActive(['/home'])} block px-4 py-2 hover:bg-gray-600`}
+          className={`${isActive(['/home'])} block px-4 py-2 my-2 hover:bg-gray-200 hover:text-black rounded-lg`}
           onClick={() => setIsMobileMenuOpen(false)}
         >
           Home
@@ -118,7 +168,7 @@ const Navbar = ({ title }) => {
               '/service/brand-activation',
               '/service/media-planner',
               '/service/production'
-            ])} block px-4 py-2 w-full text-left hover:bg-gray-600`}
+            ])} block px-4 py-2 my-2 w-full text-left hover:bg-gray-200 hover:text-black rounded-lg`}
           >
             Service
             {isServiceMenuOpen ? (
@@ -128,31 +178,31 @@ const Navbar = ({ title }) => {
             )}
           </button>
           {isServiceMenuOpen && (
-            <div className="bg-gray-700 text-white mt-2 rounded">
+            <div className="dark:bg-gray-700 bg-gray-300 gray-300 mt-2 rounded-lg">
               <Link
                 to="/service/event-management"
-                className={`${isActive(['/service/event-management'])} block px-4 py-2 hover:bg-gray-600`}
+                className={`${isActive(['/service/event-management'])} block px-4 py-2 hover:bg-gray-200 hover:text-black rounded-lg`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Event Management
               </Link>
               <Link
                 to="/service/brand-activation"
-                className={`${isActive(['/service/brand-activation'])} block px-4 py-2 hover:bg-gray-600`}
+                className={`${isActive(['/service/brand-activation'])} block px-4 py-2 hover:bg-gray-200 hover:text-black rounded-lg`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Brand Activation
               </Link>
               <Link
                 to="/service/media-planner"
-                className={`${isActive(['/service/media-planner'])} block px-4 py-2 hover:bg-gray-600`}
+                className={`${isActive(['/service/media-planner'])} block px-4 py-2 hover:bg-gray-200 hover:text-black rounded-lg`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Media Planner
               </Link>
               <Link
                 to="/service/production"
-                className={`${isActive(['/service/production'])} block px-4 py-2 hover:bg-gray-600`}
+                className={`${isActive(['/service/production'])} block px-4 py-2 hover:bg-gray-200 hover:text-black rounded-lg`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Production
@@ -162,14 +212,14 @@ const Navbar = ({ title }) => {
         </div>
         <Link
           to="/artist"
-          className={`${isActive(['/artist'])} block px-4 py-2 hover:bg-gray-600`}
+          className={`${isActive(['/artist'])} block px-4 py-2 my-2 hover:bg-gray-200 hover:text-black rounded-lg`}
           onClick={() => setIsMobileMenuOpen(false)}
         >
           Artist
         </Link>
         <Link
           to="/contact"
-          className={`${isActive(['/contact'])} block px-4 py-2 hover:bg-gray-600`}
+          className={`${isActive(['/contact'])} block px-4 py-2 my-2 hover:bg-gray-200 hover:text-black rounded-lg`}
           onClick={() => setIsMobileMenuOpen(false)}
         >
           Contact

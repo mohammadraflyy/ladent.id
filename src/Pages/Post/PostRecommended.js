@@ -29,7 +29,7 @@ const PostRecommended = ({ posts }) => {
             {limitedPosts.map((post) => {
                 const formattedDate = new Date(post.created_at).toLocaleDateString();
                 return (
-                <div key={post.id} className="w-full bg-gray-800 hover:bg-gray-700 transition duration-300 rounded-lg overflow-hidden">
+                <div key={post.id} className="w-full dark:bg-gray-800 bg-white shadow-lg dark:hover:bg-gray-700 hover:bg-gray-200 transition duration-300 rounded-lg overflow-hidden">
                     <Link to={`/posts/${post.slug}`} className="flex flex-col">
                     {post.image && (
                         <img

@@ -29,7 +29,7 @@ const PostYear = () => {
   return (
     <AppLayouts title={null}>
         <div className="p-4">
-            <h1 className="text-xl font-bold mb-4 text-white">Results from year: <span className="text-gray-400">{year}</span></h1>
+            <h1 className="text-xl font-bold mb-4 dark:text-white text-gray-700">Results from year: <span className="text-gray-400">{year}</span></h1>
             {loading && <PostLoading /> }
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
                 {filteredPosts.map((post, index) => (

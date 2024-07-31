@@ -38,7 +38,7 @@ const PostSearch = () => {
   return (
     <AppLayouts title={null}>
         <div className="p-4">
-            <h1 className="text-xl font-bold mb-4 text-white">Search Results: <span className="text-gray-400">{queries}</span></h1>
+            <h1 className="text-xl font-bold mb-4 dark:text-white text-gray-700">Search Results: <span className="dark:text-gray-400 text-gray-500">{queries}</span></h1>
             {loading && <PostLoading /> }
             {error && <p className="text-red-500">Error: {error}</p>}
             {filteredPosts.length === 0 && !loading && !error && (

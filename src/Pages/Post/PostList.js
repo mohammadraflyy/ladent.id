@@ -3,8 +3,8 @@ import Post from './Post';
 
 const PostList = ({ posts }) => {
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 mb-10">
-      {posts.data.map((post, index) => (
+    <div className="grid grid-cols-1 gap-4 mb-10">
+      {posts.data.slice(3).map((post, index) => (
         <div key={index} className="w-full">
           <Post
             title={post.title}

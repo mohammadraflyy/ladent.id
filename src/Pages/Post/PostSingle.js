@@ -57,7 +57,7 @@ const PostSingle = () => {
   if (error) {
     return (
       <AppLayouts title={null}>
-        <div className="mx-auto container bg-gray-900 text-white rounded-lg py-10">
+        <div className="mx-auto container dark:bg-gray-900 bg-gray-100 text-white rounded-lg py-10">
           <p className="text-center text-red-500">Error: {error}</p>
         </div>
       </AppLayouts>
@@ -77,7 +77,7 @@ const PostSingle = () => {
 
   return (
     <AppLayouts title={null}>
-      <article className="mx-auto container bg-gray-900 text-white rounded-lg py-10">
+      <article className="mx-auto container dark:bg-gray-900 bg-gray-100 dark:text-white text-gray-800 rounded-lg py-10">
         {image && (
           <img
             src={`${API_BASE_URL}/storage/posts/${image}`}
