@@ -4,6 +4,7 @@ import AppLayouts from '../Layouts/AppLayouts';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import { API_BASE_URL, fetchArtists } from '../Utils/postService';
 import SEO from '../Components/SEO';
+import ImageModal from '../Components/ImageModal';
 
 function Artist() {
     const [searchTerm, setSearchTerm] = useState('');
@@ -11,6 +12,8 @@ function Artist() {
     const [artists, setArtists] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
+    const [modalImageSrc, setModalImageSrc] = useState(''); // State for modal image source
     const title = 'Artist';
 
     useEffect(() => {
@@ -31,6 +34,11 @@ function Artist() {
     const filteredArtists = artists.filter(artist =>
         artist.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
+
+    const handleImageClick = (imageSrc) => {
+        setModalImageSrc(imageSrc);
+        setIsModalOpen(true);
+    };
 
     return (
         <AppLayouts title={title}>
@@ -57,7 +65,7 @@ function Artist() {
                                 className='cursor-pointer p-2 hover:bg-gray-600 dark:text-gray-100 text-gray-700 hover:text-white rounded-xl'
                                 onClick={() => setSelectedArtist(artist)}
                             >
-                                {artist.name}
+                                • {artist.name}
                             </li>
                         ))}
                     </ul>
@@ -69,7 +77,8 @@ function Artist() {
                         <img
                             src={`${API_BASE_URL}/storage/artists/${selectedArtist.image}`}
                             alt={selectedArtist.name}
-                            className='w-full h-64 object-cover dark:text-gray-100 text-gray-700 rounded-xl'
+                            className='w-fit h-fit object-cover dark:text-gray-100 text-gray-700 rounded-xl cursor-pointer'
+                            onClick={() => handleImageClick(`${API_BASE_URL}/storage/artists/${selectedArtist.image}`)}
                         />
                     ) : (
                         <p className='dark:text-gray-100 text-gray-700'>Select an artist to see the picture</p>
@@ -88,6 +97,12 @@ function Artist() {
                     )}
                 </div>
             </div>
+
+            <ImageModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                imageSrc={modalImageSrc}
+            />
         </AppLayouts>
     );
 }
