@@ -12,26 +12,25 @@ function LandingPage() {
         document.title = 'LADENT ENTERTAINMENT';
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
-        const stars = initializeStars(canvas);
 
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        drawStars(ctx, stars, canvas);
-
-        const handleResize = () => {
+        const updateCanvasSize = () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
+            const stars = initializeStars(canvas);
+            drawStars(ctx, stars, canvas);
         };
-        window.addEventListener('resize', handleResize);
+
+        updateCanvasSize();
+
+        window.addEventListener('resize', updateCanvasSize);
 
         return () => {
-            window.removeEventListener('resize', handleResize);
+            window.removeEventListener('resize', updateCanvasSize);
         };
     }, []);
 
     return (
-        <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden p-4 sm:p-6 md:p-8 lg:p-24 bg-gray-100 dark:bg-gray-900">
+        <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden p-4 sm:p-6 md:p-8 lg:p-24 bg-space-gradient animate-space-animation">
             <SEO title={title} description='Landing page for ladent.id' />
             <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full z-0" />
             <div className="relative w-full text-center z-10">
@@ -43,7 +42,7 @@ function LandingPage() {
                     height={200}
                     style={{ objectFit: 'contain' }}
                 />
-                <div className="flex flex-wrap justify-center gap-4 mb-8 text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 dark:text-gray-400">
+                <div className="flex flex-wrap justify-center gap-4 mb-8 text-sm sm:text-base md:text-lg lg:text-xl text-gray-400">
                     <span className="w-full sm:w-auto">EVENT MANAGEMENT</span>
                     <span className="hidden md:block border-l border-gray-300 mx-2 h-6 md:h-auto" />
                     <span className="w-full sm:w-auto">MEDIA PLANNER</span>

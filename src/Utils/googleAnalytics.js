@@ -2,6 +2,10 @@ import { useEffect } from 'react';
 
 const GoogleAnalytics = ({ trackingId }) => {
     useEffect(() => {
+        if (document.querySelector(`script[src^="https://www.googletagmanager.com/gtag/js?id=${trackingId}"]`)) {
+            return; 
+        }
+
         const script = document.createElement('script');
         script.async = true;
         script.src = `https://www.googletagmanager.com/gtag/js?id=${trackingId}`;
@@ -13,6 +17,7 @@ const GoogleAnalytics = ({ trackingId }) => {
         }
         gtag('js', new Date());
         gtag('config', trackingId);
+
     }, [trackingId]);
 
     return null;

@@ -50,6 +50,7 @@ const Navbar = ({ title }) => {
           <div className="relative">
             <button
               onClick={toggleServiceMenu}
+              aria-label="Toggle Service Menu"
               className={`flex items-center ${isActive([
                 '/service',
                 '/service/event-management',
@@ -115,6 +116,7 @@ const Navbar = ({ title }) => {
 
           <button
             onClick={toggleDarkMode}
+            aria-label={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
             className={`hover:bg-gray-100 p-2 rounded-full transition-colors duration-300 ease-in-out 
               dark:text-white dark:hover:text-gray-800 text-gray-800`}
           >
@@ -128,6 +130,7 @@ const Navbar = ({ title }) => {
         <div className="md:hidden flex gap-5">
           <button
             onClick={toggleDarkMode}
+            aria-label={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
             className={`hover:bg-gray-100 p-2 rounded-full transition-colors duration-300 ease-in-out 
               dark:text-white dark:hover:text-gray-800 text-gray-800`}
           >
@@ -139,6 +142,7 @@ const Navbar = ({ title }) => {
           </button>
           <button
             onClick={toggleMobileMenu}
+            aria-label={isMobileMenuOpen ? 'Close Menu' : 'Open Menu'}
             className="md:hidden dark:text-white text-black focus:outline-none"
           >
             {isMobileMenuOpen ? (
@@ -162,6 +166,7 @@ const Navbar = ({ title }) => {
         <div className="relative">
           <button
             onClick={toggleServiceMenu}
+            aria-label="Toggle Service Menu"
             className={`flex items-center ${isActive([
               '/service',
               '/service/event-management',

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { API_BASE_URL } from '../../Utils/postService';
 import Slider from 'react-slick';
@@ -42,6 +42,13 @@ const PostGrid = ({ posts }) => {
         prevArrow: <PrevArrow />
     }), []);
 
+    useEffect(() => {
+        posts.data.slice(0, 3).forEach(post => {
+            const img = new Image();
+            img.src = `${API_BASE_URL}/storage/posts/${post.image}`;
+        });
+    }, [posts]);
+
     return (
         <div className="grid grid-cols-1 gap-4 mb-10">
             <div className="relative">
@@ -57,7 +64,8 @@ const PostGrid = ({ posts }) => {
                                 <img
                                     src={imageUrl}
                                     alt={post.title}
-                                    className="object-cover w-full h-full" // Ensures the image covers the area
+                                    className="object-cover w-full h-full"
+                                    loading="eager"
                                 />
                                 <div className="absolute inset-0 flex items-end justify-center p-4">
                                     <div className="bg-gradient-to-t from-black via-transparent to-transparent absolute inset-0" />

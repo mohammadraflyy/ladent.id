@@ -13,37 +13,36 @@ const PostSingle = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!slug) {
-      setError("Slug parameter is missing");
-      setLoading(false);
-      return;
-    }
+    const fetchData = async () => {
+      if (!slug) {
+        setError("Slug parameter is missing");
+        setLoading(false);
+        return;
+      }
 
-    const fetchPost = async () => {
       try {
-        const response = await fetchPostBySlug(slug);
-        if (response.data) {
-          setPost(response.data);
+        const postResponse = await fetchPostBySlug(slug);
+        if (postResponse.data) {
+          setPost(postResponse.data);
+
+          if (postResponse.data.image) {
+            const img = new Image();
+            img.src = `${API_BASE_URL}/storage/posts/${postResponse.data.image}`;
+          }
         } else {
           setError("Post not found");
         }
+
+        const recommendedResponse = await fetchAllPosts();
+        setPostRecommended(recommendedResponse.data || []);
       } catch (err) {
         setError(err.message || "An unexpected error occurred");
+      } finally {
+        setLoading(false);
       }
     };
 
-    const fetchRecommended = async () => {
-      try {
-        const response = await fetchAllPosts();
-        setPostRecommended(response.data || []);
-      } catch (err) {
-        console.error(err.message || "An error occurred while fetching recommended posts.");
-      }
-    };
-
-    fetchPost();
-    fetchRecommended();
-    setLoading(false);
+    fetchData();
   }, [slug]);
 
   if (loading) {
@@ -74,15 +73,17 @@ const PostSingle = () => {
 
   const { title, content, created_at, image, author } = post;
   const formattedDate = new Date(created_at).toLocaleDateString();
+  const imageUrl = image ? `${API_BASE_URL}/storage/posts/${image}` : '';
 
   return (
     <AppLayouts title={null}>
       <article className="mx-auto container dark:bg-gray-900 bg-gray-100 dark:text-white text-gray-800 rounded-lg py-10">
-        {image && (
+        {imageUrl && (
           <img
-            src={`${API_BASE_URL}/storage/posts/${image}`}
+            src={imageUrl}
             alt={title}
             className="w-full xl:h-[500px] h-96 object-cover mb-6 rounded-lg"
+            loading="eager"
           />
         )}
         <header className="mb-6">
@@ -95,7 +96,7 @@ const PostSingle = () => {
           <p>{content}</p>
         </div>
       </article>
-      <PostRecommended posts={postRecommended}/>
+      <PostRecommended posts={postRecommended} />
     </AppLayouts>
   );
 };
