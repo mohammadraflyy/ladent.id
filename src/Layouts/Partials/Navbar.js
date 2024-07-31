@@ -34,7 +34,7 @@ const Navbar = ({ title }) => {
 
   return (
     <nav className={`py-2 sticky top-0 shadow-lg z-20 dark:bg-gray-800 bg-white`}>
-      <div className="px-10 flex justify-between items-center">
+      <div className="px-5 py-3 flex justify-between items-center">
         <Link to="/home" className="flex items-center text-gray-800 dark:text-gray-100 text-lg lg:text-xl font-bold">
           <img src="/logo.webp" alt="Logo" className="w-10 h-10 mr-2" />
           {title}

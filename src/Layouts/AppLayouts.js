@@ -37,7 +37,7 @@ function AppLayouts({ title, children, postCountByYear }) {
                     </div>
                 </div>
             )}
-            <div className="flex-grow flex flex-col xl:flex-row md:px-20 px-10">
+            <div className="flex-grow flex flex-col xl:flex-row md:px-20 px-5">
                 <div className="flex-grow md:px-5">
                     {children}
                 </div>

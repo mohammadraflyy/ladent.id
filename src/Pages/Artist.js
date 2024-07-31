@@ -35,8 +35,8 @@ function Artist() {
     return (
         <AppLayouts title={title}>
             <SEO title={title} description='Choose artist to be shown' />
-            <div className='flex flex-col lg:flex-row dark:bg-gray-800 bg-white rounded-xl shadow-lg h-[500px]'>
-                <div className='w-full lg:w-1/4 p-4 lg:border-r border-b lg:border-b-0 lg:rounded-l-xl border-gray-300 dark:border-gray-700'>
+            <div className='flex flex-col lg:flex-row dark:bg-gray-800 bg-white rounded-xl shadow-lg h-[750px] my-5'>
+                <div className='w-full overflow-auto lg:w-1/4 p-4 lg:border-r border-b lg:border-b-0 lg:rounded-l-xl border-gray-300 dark:border-gray-700'>
                     <div className='mb-4 flex items-center dark:bg-gray-700 bg-gray-200 rounded-xl'>
                         <MagnifyingGlassIcon className='h-5 w-5 dark:text-gray-400 text-gray-700 ml-3' />
                         <input
@@ -50,17 +50,17 @@ function Artist() {
                     {loading && <p className='text-gray-100'>Loading artists...</p>}
                     {error && <p className='text-red-500'>Error: {error}</p>}
                     {!loading && !error && (
-                        <ul className='mt-4 overflow-auto h-full'>
-                            {filteredArtists.map(artist => (
-                                <li
-                                    key={artist.id}
-                                    className='cursor-pointer p-2 hover:bg-gray-600 dark:text-gray-100 text-gray-700 hover:text-white rounded-xl'
-                                    onClick={() => setSelectedArtist(artist)}
-                                >
-                                    {artist.name}
-                                </li>
-                            ))}
-                        </ul>
+                    <ul className='mt-4'>
+                        {filteredArtists.map(artist => (
+                            <li
+                                key={artist.id}
+                                className='cursor-pointer p-2 hover:bg-gray-600 dark:text-gray-100 text-gray-700 hover:text-white rounded-xl'
+                                onClick={() => setSelectedArtist(artist)}
+                            >
+                                {artist.name}
+                            </li>
+                        ))}
+                    </ul>
                     )}
                 </div>
 
