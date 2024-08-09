@@ -11,28 +11,31 @@ import PostYear from '../Pages/Post/PostYear';
 //import UnderConstruction from '../Pages/UnderConstruction';
 import Contact from '../Pages/Contact';
 import BrandActivation from '../Pages/Service/BrandActivation';
-import EventManagement from '../Pages/Service/EventManagement';
+import EventService from '../Pages/Service/EventService';
 import MediaPlanner from '../Pages/Service/MediaPlanner';
 import Production from '../Pages/Service/Production';
-
+import ProgressBarComponent from '../Components/ProgresBar';
 
 const AppRoutes = () => {
   return (
-    <Routes>
-      <Route path="/maintenance" element={<Maintenance />} />
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/artist" element={<Artist />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/service/event-management" element={<EventManagement />} />
-      <Route path="/service/brand-activation" element={<BrandActivation />} />
-      <Route path="/service/media-planner" element={<MediaPlanner />} />
-      <Route path="/service/production" element={<Production />} />
-      <Route path="/posts/:slug" element={<PostSingle />} />
-      <Route path="/posts/search" element={<PostSearch />} />
-      <Route path="/posts/archive/:year" element={<PostYear />} />
-      <Route path="*" element={<NoMatch />} />
-    </Routes>
+    <>
+      <ProgressBarComponent />
+      <Routes>
+        <Route path="/maintenance" element={<Maintenance />} />
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/artist" element={<Artist />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/service/event-service" element={<EventService />} />
+        <Route path="/service/brand-activation" element={<BrandActivation />} />
+        <Route path="/service/media-planner" element={<MediaPlanner />} />
+        <Route path="/service/production" element={<Production />} />
+        <Route path="/posts/:slug" element={<PostSingle />} />
+        <Route path="/posts/search" element={<PostSearch />} />
+        <Route path="/posts/archive/:year" element={<PostYear />} />
+        <Route path="*" element={<NoMatch />} />
+      </Routes>
+    </>
   );
 };
 

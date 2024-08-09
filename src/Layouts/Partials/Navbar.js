@@ -53,7 +53,7 @@ const Navbar = ({ title }) => {
               aria-label="Toggle Service Menu"
               className={`flex items-center ${isActive([
                 '/service',
-                '/service/event-management',
+                '/service/event-service',
                 '/service/brand-activation',
                 '/service/media-planner',
                 '/service/production'
@@ -68,11 +68,11 @@ const Navbar = ({ title }) => {
             </button>
             <div className={`absolute dark:bg-gray-700 bg-gray-200 dark:text-gray-300 text-black mt-2 rounded py-2 w-64 transition-all duration-300 ease-in-out ${isServiceMenuOpen ? 'opacity-100 max-h-screen' : 'opacity-0 max-h-0 overflow-hidden'}`}>
               <Link
-                to="/service/event-management"
-                className={`${isActive(['/service/event-management'])} hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300`}
+                to="/service/event-service"
+                className={`${isActive(['/service/event-service'])} hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300`}
                 onClick={() => setIsServiceMenuOpen(false)}
               >
-                Event Management
+                Event Service
               </Link>
               <Link
                 to="/service/brand-activation"
@@ -115,7 +115,7 @@ const Navbar = ({ title }) => {
           <button
             onClick={toggleDarkMode}
             aria-label={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-            className={`hover:bg-gray-100 p-2 rounded-full transition-colors duration-300 ease-in-out 
+            className={`hover:bg-gray-100 p-2 rounded-full transition-colors duration-300 ease-in-out
               ${isDarkMode ? 'dark:text-white dark:hover:text-gray-800 text-gray-800' : 'text-gray-800 dark:hover:text-gray-800'}`}
           >
             {isDarkMode ? (
@@ -129,7 +129,7 @@ const Navbar = ({ title }) => {
           <button
             onClick={toggleDarkMode}
             aria-label={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-            className={`hover:bg-gray-100 p-2 rounded-full transition-colors duration-300 ease-in-out 
+            className={`hover:bg-gray-100 p-2 rounded-full transition-colors duration-300 ease-in-out
               ${isDarkMode ? 'dark:text-white dark:hover:text-gray-800 text-gray-800' : 'text-gray-800 dark:hover:text-gray-800'}`}
           >
             {isDarkMode ? (
@@ -167,7 +167,7 @@ const Navbar = ({ title }) => {
             aria-label="Toggle Service Menu"
             className={`flex items-center ${isActive([
               '/service',
-              '/service/event-management',
+              '/service/event-service',
               '/service/brand-activation',
               '/service/media-planner',
               '/service/production'
@@ -182,11 +182,11 @@ const Navbar = ({ title }) => {
           </button>
           <div className={`dark:bg-gray-700 bg-gray-300 mt-2 rounded-lg transition-all duration-300 ease-in-out ${isServiceMenuOpen ? 'opacity-100 max-h-screen' : 'opacity-0 max-h-0 overflow-hidden'}`}>
             <Link
-              to="/service/event-management"
-              className={`${isActive(['/service/event-management'])} block px-4 py-2 hover:bg-gray-200 hover:text-black rounded-lg`}
+              to="/service/event-service"
+              className={`${isActive(['/service/event-service'])} block px-4 py-2 hover:bg-gray-200 hover:text-black rounded-lg`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Event Management
+              Event Service
             </Link>
             <Link
               to="/service/brand-activation"
