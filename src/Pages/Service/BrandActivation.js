@@ -5,50 +5,27 @@ import AppLayouts from '../../Layouts/AppLayouts';
 function BrandActivation() {
     return (
         <AppLayouts title={null}>
-            <div className="py-8">
+            <div className="py-8 px-4 sm:px-6 lg:px-8">
                 <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">Brand Activation</h1>
-                <section className="mb-8">
-                    <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">Introduction</h2>
-                    <p className="text-lg text-gray-700 dark:text-gray-300 mt-4">
-                        Brand activation is the process of making your brand known to people, increasing awareness and engagement through some kind of brand experience. This process involves creating a specific plan and executing it in a way that directly engages your target audience.
-                    </p>
-                </section>
-                
-                <section className="mb-8">
-                    <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">Objectives</h2>
-                    <p className="text-lg text-gray-700 dark:text-gray-300 mt-4">
-                        The primary objectives of brand activation are to create a lasting connection with consumers, increase brand awareness, and ultimately drive sales. This can be achieved through various means, such as experiential marketing, events, product sampling, or digital campaigns.
-                    </p>
-                </section>
-                
-                <section className="mb-8">
-                    <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">Examples of Brand Activation</h2>
-                    <ul className="list-disc list-inside text-lg text-gray-700 dark:text-gray-300 mt-4">
-                        <li>Hosting interactive events</li>
-                        <li>Creating immersive experiences</li>
-                        <li>Leveraging influencer partnerships</li>
-                        <li>Launching pop-up shops or mobile tours</li>
-                    </ul>
-                </section>
-                
-                <section className="mb-8">
-                    <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">Benefits</h2>
-                    <p className="text-lg text-gray-700 dark:text-gray-300 mt-4">
-                        Effective brand activation can lead to increased brand loyalty, greater consumer engagement, and a stronger brand presence in the market. It helps to differentiate your brand from competitors and can result in a more memorable and impactful brand experience for your audience.
-                    </p>
-                </section>
-                
-                <section className="mb-8">
-                    <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">Call to Action</h2>
-                    <p className="text-lg text-gray-700 dark:text-gray-300 mt-4">
-                        Ready to take your brand to the next level? Contact us today to learn more about how we can help you create an unforgettable brand activation experience!
-                    </p>
-                    <div className="mt-6">
-                        <a href="/contact" className="inline-block bg-blue-600 text-white text-lg font-medium px-6 py-3 rounded-lg shadow-md hover:bg-blue-700">
-                            Get in Touch
-                        </a>
+
+                <section className="mb-8 lg:flex lg:items-start lg:space-x-8">
+                    <div className="lg:w-1/3">
+                        <img
+                            src="/assets/images/brand-activation.jpg"
+                            alt="Brand Activation"
+                            className="w-full h-auto mb-6 rounded-lg shadow-lg"
+                        />
+                    </div>
+                    <div className="lg:w-2/3">
+                        <p className="text-lg text-gray-700 dark:text-gray-300 mt-4 md:mt-0">
+                            We offer a series of marketing activities aimed at driving consumer action through brand interaction and experiences based on demographic and psychographic target audience. Our comprehensive strategy for effectively implementing brand activation is designed to boost brand awareness, engage consumers, and ultimately drive sales. The strategy includes experiential marketing events, influencer collaborations, digital engagement, guerrilla marketing, and more.
+                        </p>
+                        <p className="text-lg text-gray-700 dark:text-gray-300 mt-4">
+                            Brand activation is a powerful strategy to engage consumers and create lasting impressions. By implementing the outlined activities and maintaining a focus on meaningful interactions, we can elevate our brand presence, foster deeper connections with our audience, and drive significant business growth.
+                        </p>
                     </div>
                 </section>
+
             </div>
         </AppLayouts>
     );

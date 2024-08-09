@@ -15,6 +15,7 @@ import EventService from '../Pages/Service/EventService';
 import MediaPlanner from '../Pages/Service/MediaPlanner';
 import Production from '../Pages/Service/Production';
 import ProgressBarComponent from '../Components/ProgresBar';
+import ArtistManagement from '../Pages/Service/ArtistManagement';
 
 const AppRoutes = () => {
   return (
@@ -30,6 +31,7 @@ const AppRoutes = () => {
         <Route path="/service/brand-activation" element={<BrandActivation />} />
         <Route path="/service/media-planner" element={<MediaPlanner />} />
         <Route path="/service/production" element={<Production />} />
+        <Route path="/service/artist-management" element={<ArtistManagement />} />
         <Route path="/posts/:slug" element={<PostSingle />} />
         <Route path="/posts/search" element={<PostSearch />} />
         <Route path="/posts/archive/:year" element={<PostYear />} />

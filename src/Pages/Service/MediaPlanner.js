@@ -5,55 +5,27 @@ import AppLayouts from '../../Layouts/AppLayouts';
 function MediaPlanner() {
     return (
         <AppLayouts title={null}>
-            <div className="py-8">
+            <div className="py-8 px-4 sm:px-6 lg:px-8">
                 <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">Media Planner</h1>
-                
-                <section className="mb-8">
-                    <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">Overview</h2>
-                    <p className="text-lg text-gray-700 dark:text-gray-300 mt-4">
-                        Our Media Planner service helps businesses and organizations effectively reach their target audience through strategic media placement and advertising. We analyze market trends, audience demographics, and media performance to craft optimized media plans.
-                    </p>
-                </section>
-                
-                <section className="mb-8">
-                    <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">Services Offered</h2>
-                    <p className="text-lg text-gray-700 dark:text-gray-300 mt-4">
-                        Our comprehensive media planning services include:
-                    </p>
-                    <ul className="list-disc list-inside text-lg text-gray-700 dark:text-gray-300 mt-4">
-                        <li>Market Research and Analysis</li>
-                        <li>Target Audience Identification</li>
-                        <li>Media Strategy Development</li>
-                        <li>Media Buying and Negotiation</li>
-                        <li>Campaign Tracking and Optimization</li>
-                    </ul>
-                </section>
-                
-                <section className="mb-8">
-                    <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">Why Choose Us?</h2>
-                    <p className="text-lg text-gray-700 dark:text-gray-300 mt-4">
-                        Our team of experienced media planners is dedicated to ensuring that your message reaches the right people at the right time. We leverage advanced analytics tools and industry insights to maximize your advertising budget and achieve the best possible outcomes.
-                    </p>
-                </section>
-                
-                <section className="mb-8">
-                    <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">Case Studies / Success Stories</h2>
-                    <p className="text-lg text-gray-700 dark:text-gray-300 mt-4">
-                        We’ve successfully helped numerous clients across various industries increase their brand visibility and achieve their marketing objectives. Check out our case studies to learn more about our proven track record and how we can help your business grow.
-                    </p>
-                </section>
-                
-                <section className="mb-8">
-                    <h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200">Call to Action</h2>
-                    <p className="text-lg text-gray-700 dark:text-gray-300 mt-4">
-                        Ready to elevate your media strategy? Contact us today to discuss how our Media Planner service can help you reach your goals and make a lasting impact in the market.
-                    </p>
-                    <div className="mt-6">
-                        <a href="/contact" className="inline-block bg-blue-600 text-white text-lg font-medium px-6 py-3 rounded-lg shadow-md hover:bg-blue-700">
-                            Get in Touch
-                        </a>
+
+                <section className="mb-8 lg:flex lg:items-start lg:space-x-8">
+                    <div className="lg:w-1/3">
+                        <img
+                            src="/assets/images/media-planner.jpg"
+                            alt="Media Planner"
+                            className="w-full h-auto mb-6 rounded-lg shadow-lg"
+                        />
+                    </div>
+                    <div className="lg:w-2/3">
+                        <p className="text-lg text-gray-700 dark:text-gray-300 mt-4 md:mt-0">
+                            In the rapidly evolving landscape of media and advertising, effective media planning is crucial for ensuring that marketing campaigns reach their intended audience with maximum impact. We offer strategies and methodologies for developing a comprehensive media plan tailored to our client's needs. We identify the target audience, select appropriate media channels, optimize media budget allocation, maximize return on investment (ROI), and track and analyze campaign performance.
+                        </p>
+                        <p className="text-lg text-gray-700 dark:text-gray-300 mt-4">
+                            Understanding the target audience is fundamental to media planning, including demographics (age, gender, income, education level, occupation), psychographics (interests, values, lifestyle, attitudes), and behavioral data (purchasing habits, brand loyalty, product usage). We conduct market research through surveys and focus groups, analyze existing customer data and market reports, and utilize social media analytics and digital footprint analysis. By following a comprehensive media planning approach, we aim to create a highly effective advertising campaign that not only reaches the intended audience but also delivers measurable results. Our goal is to ensure the client’s brand achieves maximum visibility and engagement within the allocated budget.
+                        </p>
                     </div>
                 </section>
+
             </div>
         </AppLayouts>
     );

@@ -95,6 +95,13 @@ const Navbar = ({ title }) => {
               >
                 Production
               </Link>
+              <Link
+                to="/service/artist-management"
+                className={`${isActive(['/service/artist-management'])} hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300`}
+                onClick={() => setIsServiceMenuOpen(false)}
+              >
+                Artist Management
+              </Link>
             </div>
           </div>
 
@@ -208,6 +215,13 @@ const Navbar = ({ title }) => {
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Production
+            </Link>
+            <Link
+              to="/service/artist-management"
+              className={`${isActive(['/service/artist-management'])} block px-4 py-2 hover:bg-gray-200 hover:text-black rounded-lg`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              Artist Management
             </Link>
           </div>
         </div>
