@@ -4,7 +4,9 @@ import { ChevronDownIcon, ChevronUpIcon, Bars3Icon, XMarkIcon, SunIcon, MoonIcon
 
 const Navbar = ({ title }) => {
   const [isServiceMenuOpen, setIsServiceMenuOpen] = useState(false);
+  const [isHomeMenuOpen, setIsHomeMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileHomeMenuOpen, setIsMobileHomeMenuOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(() => localStorage.getItem('darkMode') === 'true');
   const location = useLocation();
 
@@ -17,12 +19,20 @@ const Navbar = ({ title }) => {
     setIsServiceMenuOpen(!isServiceMenuOpen);
   };
 
+  const toggleHomeMenu = () => {
+    setIsHomeMenuOpen(!isHomeMenuOpen);
+  };
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
   const toggleDarkMode = () => {
     setIsDarkMode(prevMode => !prevMode);
+  };
+
+  const toggleMobileHomeMenu = () => {
+    setIsMobileHomeMenuOpen(!isMobileHomeMenuOpen);
   };
 
   const isActive = (paths) => {
@@ -40,13 +50,106 @@ const Navbar = ({ title }) => {
           {title}
         </Link>
         <div className="hidden md:flex items-center space-x-5 relative text-md font-base">
-          <Link
-            to="/home"
-            className={`${isActive(['/home'])} dark:text-white hover:text-gray-300 text-gray-900 rounded-xl hover:bg-gray-700 px-3 py-1 transition-colors duration-300`}
-          >
-            Home
-          </Link>
-
+          <div className="relative">
+              <button
+                  onClick={toggleHomeMenu}
+                  aria-label="Toggle Home Menu"
+                  className={`flex items-center ${isActive(['/home'])} dark:text-white hover:text-gray-300 text-gray-900 rounded-xl hover:bg-gray-700 px-3 py-1 transition-colors duration-300`}
+              >
+                  Home
+                  {isHomeMenuOpen ? (
+                      <ChevronUpIcon className="w-5 h-5 ml-2 font-bold transition-transform duration-300 ease-in-out" />
+                  ) : (
+                      <ChevronDownIcon className="w-5 h-5 ml-2 font-bold transition-transform duration-300 ease-in-out" />
+                  )}
+              </button>
+              <div className={`absolute dark:bg-gray-700 bg-gray-200 dark:text-gray-300 text-black mt-2 rounded py-2 w-64 transition-all duration-300 ease-in-out ${isHomeMenuOpen ? 'opacity-100 max-h-screen' : 'opacity-0 max-h-0 overflow-hidden'}`}>
+                  {isActive([
+                    '/home',
+                    '/home#profile',
+                    '/home#executive-summary',
+                    '/home#milestones',
+                    '/home#clients',
+                    '/home#article'
+                  ]) ? (
+                    <>
+<a
+                        href="#profile"
+                        className="hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300"
+                        onClick={() => setIsHomeMenuOpen(false)}
+                      >
+                        Profile
+                      </a>
+                      <a
+                        href="#executive-summary"
+                        className="hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300"
+                        onClick={() => setIsHomeMenuOpen(false)}
+                      >
+                        Executive Summary
+                      </a>
+                      <a
+                        href="#milestones"
+                        className="hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300"
+                        onClick={() => setIsHomeMenuOpen(false)}
+                      >
+                        Milestones
+                      </a>
+                      <a
+                        href="#clients"
+                        className="hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300"
+                        onClick={() => setIsHomeMenuOpen(false)}
+                      >
+                        Clients
+                      </a>
+                      <a
+                        href="#article"
+                        className="hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300"
+                        onClick={() => setIsHomeMenuOpen(false)}
+                      >
+                        Article
+                      </a>
+                    </>
+                  ) : (
+                    <>
+                      <Link
+                          to="/home#profile"
+                          className="hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300"
+                          onClick={() => setIsHomeMenuOpen(false)}
+                      >
+                          Profile
+                      </Link>
+                      <Link
+                          to="/home#executive-summary"
+                          className="hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300"
+                          onClick={() => setIsHomeMenuOpen(false)}
+                      >
+                          Executive Summary
+                      </Link>
+                      <Link
+                          to="/home#milestones"
+                          className="hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300"
+                          onClick={() => setIsHomeMenuOpen(false)}
+                      >
+                          Milestones
+                      </Link>
+                      <Link
+                          to="/home#clients"
+                          className="hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300"
+                          onClick={() => setIsHomeMenuOpen(false)}
+                      >
+                          Clients
+                      </Link>
+                      <Link
+                          to="/home#article"
+                          className="hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300"
+                          onClick={() => setIsHomeMenuOpen(false)}
+                      >
+                          Article
+                      </Link>
+                    </>
+                  )}
+              </div>
+          </div>
           <div className="relative">
             <button
               onClick={toggleServiceMenu}
@@ -88,6 +191,7 @@ const Navbar = ({ title }) => {
               >
                 Media Planner
               </Link>
+              {/*
               <Link
                 to="/service/production"
                 className={`${isActive(['/service/production'])} hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300`}
@@ -95,6 +199,7 @@ const Navbar = ({ title }) => {
               >
                 Production
               </Link>
+              */}
               <Link
                 to="/service/artist-management"
                 className={`${isActive(['/service/artist-management'])} hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300`}
@@ -161,13 +266,106 @@ const Navbar = ({ title }) => {
       <div
         className={`md:hidden transition-all duration-300 ease-in-out ${isMobileMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'} dark:bg-gray-800 bg-white dark:text-gray-300 text-gray-800 rounded px-2 md:px-20`}
       >
-        <Link
-          to="/home"
-          className={`${isActive(['/home'])} block px-4 py-2 my-2 hover:bg-gray-200 hover:text-black rounded-lg`}
-          onClick={() => setIsMobileMenuOpen(false)}
-        >
-          Home
-        </Link>
+          <button
+            onClick={toggleMobileHomeMenu}
+            className={`${isActive(['/home'])} block px-4 py-2 my-2 w-full text-left hover:bg-gray-200 hover:text-black rounded-lg`}
+          >
+            Home
+            {isMobileHomeMenuOpen ? (
+              <ChevronUpIcon className="w-5 h-5 ml-2 font-bold transition-transform duration-300 ease-in-out inline" />
+            ) : (
+              <ChevronDownIcon className="w-5 h-5 ml-2 font-bold transition-transform duration-300 ease-in-out inline" />
+            )}
+          </button>
+          {isMobileHomeMenuOpen && (
+            <div className="pl-6">
+              {isActive([
+                '/home',
+                '/home#profile',
+                '/home#executive-summary',
+                '/home#milestones',
+                '/home#clients',
+                '/home#article'
+              ]) === false ? (
+                <>
+<a
+                        href="#profile"
+                        className="hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300"
+                        onClick={() => setIsHomeMenuOpen(false)}
+                      >
+                        Profile
+                      </a>
+                      <a
+                        href="#executive-summary"
+                        className="hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300"
+                        onClick={() => setIsHomeMenuOpen(false)}
+                      >
+                        Executive Summary
+                      </a>
+                      <a
+                        href="#milestones"
+                        className="hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300"
+                        onClick={() => setIsHomeMenuOpen(false)}
+                      >
+                        Milestones
+                      </a>
+                      <a
+                        href="#clients"
+                        className="hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300"
+                        onClick={() => setIsHomeMenuOpen(false)}
+                      >
+                        Clients
+                      </a>
+                      <a
+                        href="#article"
+                        className="hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300"
+                        onClick={() => setIsHomeMenuOpen(false)}
+                      >
+                        Article
+                      </a>
+                </>
+              ) : (
+                <>
+                      <Link
+                          to="/home#profile"
+                          className="hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300"
+                          onClick={() => setIsHomeMenuOpen(false)}
+                      >
+                          Profile
+                      </Link>
+                      <Link
+                          to="/home#executive-summary"
+                          className="hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300"
+                          onClick={() => setIsHomeMenuOpen(false)}
+                      >
+                          Executive Summary
+                      </Link>
+                      <Link
+                          to="/home#milestones"
+                          className="hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300"
+                          onClick={() => setIsHomeMenuOpen(false)}
+                      >
+                          Milestones
+                      </Link>
+                      <Link
+                          to="/home#clients"
+                          className="hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300"
+                          onClick={() => setIsHomeMenuOpen(false)}
+                      >
+                          Clients
+                      </Link>
+                      <Link
+                          to="/home#article"
+                          className="hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300"
+                          onClick={() => setIsHomeMenuOpen(false)}
+                      >
+                          Article
+                      </Link>
+                </>
+              )}
+
+            </div>
+          )}
         <div className="relative">
           <button
             onClick={toggleServiceMenu}
@@ -209,6 +407,7 @@ const Navbar = ({ title }) => {
             >
               Media Planner
             </Link>
+            {/*}
             <Link
               to="/service/production"
               className={`${isActive(['/service/production'])} block px-4 py-2 hover:bg-gray-200 hover:text-black rounded-lg`}
@@ -216,6 +415,7 @@ const Navbar = ({ title }) => {
             >
               Production
             </Link>
+            */}
             <Link
               to="/service/artist-management"
               className={`${isActive(['/service/artist-management'])} block px-4 py-2 hover:bg-gray-200 hover:text-black rounded-lg`}

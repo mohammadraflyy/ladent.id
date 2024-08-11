@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import '../App.css';
+import React, { useEffect } from 'react';
 import Navbar from './Partials/Navbar';
 import Footer from './Partials/Footer';
-import Sidebar from './Partials/Sidebar';
-import { fetchAllPosts } from '../Utils/postService';
+import '../App.css';
 
-function AppLayouts({ title, children, postCountByYear }) {
-    const [posts, setPosts] = useState([]);
+function AppLayouts({ title, children }) {
 
     useEffect(() => {
         if (title) {
@@ -14,38 +11,22 @@ function AppLayouts({ title, children, postCountByYear }) {
         } else {
             document.title = 'LADON ENTERTAINMENT';
         }
-        
-        const fetchPosts = async () => {
-            try {
-                const fetchedPosts = await fetchAllPosts();
-                setPosts(fetchedPosts);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
-        fetchPosts();
     }, [title]);
 
     return (
         <main className="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-900">
             <Navbar title="LADON ENTERTAINMENT" />
-            {title != null && (
-                <div className="px-10 py-2 md:px-20 md:py-5">
+            {title && title !== 'Home' && (
+                <div className={`px-10 md:px-20 md:py-5`}>
                     <div className="md:px-5 text-2xl md:text-3xl font-bold text-gray-900 dark:text-white">
                         {title}
                     </div>
                 </div>
             )}
-            <div className="flex-grow flex flex-col xl:flex-row md:px-20 px-5">
-                <div className="flex-grow md:px-5">
+            <div className={`flex-grow flex flex-col xl:flex-row ${title !== 'Home' ? 'px-5 md:px-20' : 'md:px-0'}`}>
+                <div className="flex-grow">
                     {children}
                 </div>
-                {title === "Home" && (
-                    <div className="md:px-5 md:mt-0 py-10 xl:py-0">
-                        <Sidebar postCountByYear={postCountByYear} posts={posts} />
-                    </div>
-                )}
             </div>
             <Footer title="LADON ENTERTAINMENT" />
         </main>

@@ -18,6 +18,7 @@ function Contact() {
 
     return (
         <AppLayouts title={null}>
+
             <SEO title={title} description='Contact page for ladent.id' />
             <div className='max-w-4xl mx-auto md:p-10 dark:bg-gray-900 bg-gray-100 my-5 md:dark:bg-gray-800 md:bg-white mb-10 rounded-xl'>
                 <div className="flex flex-col md:flex-row justify-between items-start gap-10">
