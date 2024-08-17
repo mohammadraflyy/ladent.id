@@ -12,7 +12,7 @@ function Contact() {
 
     const handleSendMessage = () => {
         const fullMessage = `Phone Number: ${phone}\n\n${message}`;
-        const mailtoLink = `mailto:official@ladent.id?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(fullMessage)}`;
+        const mailtoLink = `mailto:alex@ladent.id?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(fullMessage)}`;
         window.location.href = mailtoLink;
     };
 

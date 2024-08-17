@@ -233,38 +233,44 @@ function Home() {
                         <Timeline />
                     </section>
 
-                    <section id="clients" className='p-5 md:px-32 lg:px-64 xl:px-96 py-32 bg-white dark:bg-gray-900'>
+                    <section id="clients" className='p-5 py-32 bg-white dark:bg-gray-900'>
                         <h2 className="text-4xl font-bold my-5 dark:text-white text-black text-center">Clients</h2>
-                        <div className="flex flex-wrap justify-center gap-4">
-                            <img src="/assets/images/clients/alfa-gift.jpg" alt="Alfa Gift" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/bank-bca.png" alt="Bank BCA" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/bank-mandiri.png" alt="Bank Mandiri" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/capcut.jpg" alt="CAPCUT" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/FOE2.jpg" alt="FOE2" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/holla.png" alt="Holla" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/indihome-channel-jowo.jpg" alt="Indihome Channel Jowo" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/jakarta-tv.png" alt="Jakarta TV" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/kompas-tv.png" alt="Kompas TV" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/life-after.jpeg" alt="Life After" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/litmatch.jpg" alt="Litmatch" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/metro-tv.png" alt="Metro TV" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/miniso.png" alt="Miniso" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/mnc-group.jpg" alt="MNC Group" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/monvaper.png" alt="Monvaper" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/omi.png" alt="OMI" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/polytron.png" alt="Polytron" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/resso.png" alt="Resso" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/rinnai.png" alt="Rinnai" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/rtv.jpg" alt="RTV" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/scarlett.jpg" alt="Scarlett" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/smartfren.jpg" alt="Smartfren" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/snack-video.jpg" alt="Snack Video" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/tiktok.png" alt="Tiktok" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/trans-corp.png" alt="Trans Corp" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/tv-one.png" alt="TV One" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/tvri.png" alt="TVRI" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/uni-craft.jpg" alt="Uni Craft" className="w-fit h-32 object-cover" />
-                            <img src="/assets/images/clients/wave-game.jpg" alt="Wave Game" className="w-fit h-32 object-cover" />
+                        <div className="flex flex-wrap justify-center gap-4 overflow-auto">
+                            <div className='flex opacity-40'>
+                                <img src="/assets/images/clients/alfa-gift.jpg" alt="Alfa Gift" className="w-fit h-32 object-cover" />
+                                <img src="/assets/images/clients/bank-bca.png" alt="Bank BCA" className="w-fit h-32 object-cover" />
+                                <img src="/assets/images/clients/bank-mandiri.png" alt="Bank Mandiri" className="w-fit h-32 object-cover" />
+                                <img src="/assets/images/clients/capcut.jpg" alt="CAPCUT" className="w-fit h-32 object-cover" />
+                                <img src="/assets/images/clients/FOE2.jpg" alt="FOE2" className="w-fit h-32 object-cover" />
+                                <img src="/assets/images/clients/holla.png" alt="Holla" className="w-fit h-32 object-cover" />
+                                <img src="/assets/images/clients/indihome-channel-jowo.jpg" alt="Indihome Channel Jowo" className="w-fit h-32 object-cover" />
+                                <img src="/assets/images/clients/jakarta-tv.png" alt="Jakarta TV" className="w-fit h-32 object-cover" />
+                                <img src="/assets/images/clients/kompas-tv.png" alt="Kompas TV" className="w-fit h-32 object-cover" />
+                                <img src="/assets/images/clients/life-after.jpeg" alt="Life After" className="w-fit h-32 object-cover" />
+                                <img src="/assets/images/clients/litmatch.jpg" alt="Litmatch" className="w-fit h-32 object-cover" />
+                            </div>
+                            <div className='flex opacity-40'>
+                                <img src="/assets/images/clients/metro-tv.png" alt="Metro TV" className="w-fit h-32 object-cover" />
+                                <img src="/assets/images/clients/miniso.png" alt="Miniso" className="w-fit h-32 object-cover" />
+                                <img src="/assets/images/clients/mnc-group.jpg" alt="MNC Group" className="w-fit h-32 object-cover" />
+                                <img src="/assets/images/clients/monvaper.png" alt="Monvaper" className="w-fit h-32 object-cover" />
+                                <img src="/assets/images/clients/omi.png" alt="OMI" className="w-fit h-32 object-cover" />
+                                <img src="/assets/images/clients/polytron.png" alt="Polytron" className="w-fit h-32 object-cover" />
+                                <img src="/assets/images/clients/resso.png" alt="Resso" className="w-fit h-32 object-cover" />
+                                <img src="/assets/images/clients/rinnai.png" alt="Rinnai" className="w-fit h-32 object-cover" />
+                                <img src="/assets/images/clients/rtv.jpg" alt="RTV" className="w-fit h-32 object-cover" />
+                            </div>
+                            <div className='flex opacity-40'>
+                                <img src="/assets/images/clients/scarlett.jpg" alt="Scarlett" className="w-fit h-32 object-cover" />
+                                <img src="/assets/images/clients/smartfren.jpg" alt="Smartfren" className="w-fit h-32 object-cover" />
+                                <img src="/assets/images/clients/snack-video.jpg" alt="Snack Video" className="w-fit h-32 object-cover" />
+                                <img src="/assets/images/clients/tiktok.png" alt="Tiktok" className="w-fit h-32 object-cover" />
+                                <img src="/assets/images/clients/trans-corp.png" alt="Trans Corp" className="w-fit h-32 object-cover" />
+                                <img src="/assets/images/clients/tv-one.png" alt="TV One" className="w-fit h-32 object-cover" />
+                                <img src="/assets/images/clients/tvri.png" alt="TVRI" className="w-fit h-32 object-cover" />
+                                <img src="/assets/images/clients/uni-craft.jpg" alt="Uni Craft" className="w-fit h-32 object-cover" />
+                                <img src="/assets/images/clients/wave-game.jpg" alt="Wave Game" className="w-fit h-32 object-cover" />
+                            </div>
                         </div>
                     </section>
 

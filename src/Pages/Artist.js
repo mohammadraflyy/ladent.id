@@ -59,8 +59,8 @@ function Artist() {
             <SEO title={title} description='Choose artist to be shown' />
             <div className='flex flex-col lg:flex-row rounded-xl h-[750px] my-5'>
                 {/* Left Sidebar - Artist Names */}
-                <div className='w-full overflow-auto p-4 h-full lg:border-r border-b lg:border-b-0 lg:rounded-l-xl border-gray-300 dark:border-gray-700'>
-                    <h2 className="text-sm text-gray-500 text-left mb-5">ARTISTS</h2>
+                <div className='w-full md:overflow-auto p-4 h-fit md:h-full lg:border-r border-b lg:border-b-0 lg:rounded-l-xl border-gray-300 dark:border-gray-700'>
+                    <h2 className="text-sm text-gray-500 text-center mb-5">ARTISTS</h2>
 
                     {/* Mobile View: Select Dropdown */}
                     <div className='block lg:hidden mb-4'>
@@ -80,7 +80,7 @@ function Artist() {
 
                     {/* Desktop View: List */}
                     <div className='hidden lg:block'>
-                        <div className='mb-4 flex items-center dark:bg-gray-700 bg-gray-200 rounded-xl'>
+                        <div className='hidden mb-4 items-center dark:bg-gray-700 bg-gray-200 rounded-xl'>
                             <MagnifyingGlassIcon className='h-5 w-5 dark:text-gray-400 text-gray-700 ml-3' />
                             <input
                                 type='text'
@@ -93,14 +93,14 @@ function Artist() {
                         {loading && <p className='text-gray-100'>Loading artists...</p>}
                         {error && <p className='text-red-500'>Error: {error}</p>}
                         {!loading && !error && (
-                            <ul className='text-left space-y-2'>
+                            <ul className='text-center'>
                                 {filteredArtists.map(artist => (
                                     <li
                                         key={artist.id}
                                         className={`cursor-pointer p-2 ${selectedArtist?.id === artist.id ? 'font-bold' : ''} hover:bg-gray-600 dark:text-gray-100 text-gray-700 hover:text-white rounded-xl`}
                                         onClick={() => setSelectedArtist(artist)}
                                     >
-                                        • {artist.name}
+                                        {artist.name}
                                     </li>
                                 ))}
                             </ul>
@@ -131,7 +131,7 @@ function Artist() {
                 <div className='w-full h-full p-4 rounded-r-xl border-gray-300 overflow-auto'>
                     {selectedArtist ? (
                         <>
-                            <div className='flex justify-center items-center'>
+                            <div className='flex justify-center items-center md:border-b border-gray-300 dark:border-gray-700'>
                                 <div className='text-center mb-2'>
                                     <h2 className='text-xl font-bold dark:text-gray-100 text-gray-700'>{selectedArtist.name}</h2>
                                     <p className='font-light text-sm dark:text-gray-100 text-gray-700'>{selectedArtist.birthdate}</p>
