@@ -6,11 +6,11 @@ const ImageModal = ({ isOpen, onClose, imageSrc }) => {
 
   return ReactDOM.createPortal(
     <div className='fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50'>
-      <div className='relative'>
+      <div className='relative bg-white p-4 rounded-lg shadow-lg max-w-3xl w-full mx-4 max-h-[80vh] overflow-y-auto'>
         <img
           src={imageSrc}
           alt='Zoomed'
-          className='w-fit h-fit object-contain'
+          className='w-full h-auto object-contain rounded-lg'
         />
         <button
           onClick={onClose}
