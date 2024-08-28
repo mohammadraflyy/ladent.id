@@ -1,40 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import '../App.css';
 import AppLayouts from '../Layouts/AppLayouts';
-import PostList from './Post/PostList';
-import { fetchAllPosts } from '../Utils/postService';
+//import PostList from './Post/PostList';
+//import { fetchAllPosts } from '../Utils/postService';
 import PostLoading from './Post/PostLoading';
 import SEO from '../Components/SEO';
-import PostGrid from './Post/PostGrid';
+//import PostGrid from './Post/PostGrid';
 import PostLoadingGrid from './Post/PostLoadingGrid';
-import Sidebar from '../Layouts/Partials/Sidebar';
+//import Sidebar from '../Layouts/Partials/Sidebar';
 import { BriefcaseIcon, Cog8ToothIcon, GlobeAltIcon, HandThumbUpIcon, HeartIcon, LightBulbIcon, LinkIcon, MegaphoneIcon, ShieldCheckIcon, SparklesIcon, StarIcon, UserGroupIcon } from '@heroicons/react/24/outline';
 import Timeline from '../Components/Timeline';
 
 function Home() {
-    const [posts, setPosts] = useState([]);
-    const [postCountByYear, setPostCountByYear] = useState({});
+    //const [posts, setPosts] = useState([]);
+    //const [postCountByYear, setPostCountByYear] = useState({});
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    //const [error, setError] = useState(null);
     const title = 'Home';
 
     useEffect(() => {
         const fetchPosts = async () => {
             setLoading(true);
             try {
-                const fetchedPosts = await fetchAllPosts();
-                setPosts(fetchedPosts);
+                //const fetchedPosts = await fetchAllPosts();
+                //setPosts(fetchedPosts);
 
-                const countByYear = fetchedPosts.data.reduce((acc, post) => {
-                    const year = new Date(post.created_at).getFullYear();
-                    acc[year] = (acc[year] || 0) + 1;
-                    return acc;
-                }, {});
+                //const countByYear = fetchedPosts.data.reduce((acc, post) => {
+                //    const year = new Date(post.created_at).getFullYear();
+                //    acc[year] = (acc[year] || 0) + 1;
+                //    return acc;
+                //}, {});
 
-                setPostCountByYear(countByYear);
+                //setPostCountByYear(countByYear);
             } catch (error) {
-                setError("Failed to fetch posts.");
-                console.error(error);
+                //setError("Failed to fetch posts.");
+                //console.error(error);
             } finally {
                 setLoading(false);
             }
@@ -51,8 +51,8 @@ function Home() {
                     <PostLoadingGrid />
                     <PostLoading />
                 </>
-            ) : error ? (
-                <p>{error}</p>
+            //) : error ? (
+            //    <p>{error}</p>
             ) : (
                 <>
                     <section id="profile" className="bg-purple-200 bg-opacity-30 p-5 md:px-32 lg:px-64 xl:px-96">
@@ -71,52 +71,54 @@ function Home() {
 
                         <section id="vision" class="mt-8">
                             <h2 class="text-3xl font-bold dark:text-white text-black mb-4">VISION</h2>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg text-black dark:text-white">
-                                    <div className='flex justify-center items-center mb-4'>
-                                        <SparklesIcon class="w-16 h-16 text-blue-500 dark:text-blue-400" />
-                                    </div>
-                                    <strong class="block text-xl mb-2 dark:text-white text-black">Becoming Innovation Leaders</strong>
-                                    <p className='text-gray-400'>
-                                        Realize themselves as pioneers of innovation in the creative industry by creating unique and highly competitive products and services.
-                                    </p>
-                                </div>
-                                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg text-black dark:text-white">
-                                    <div className='flex justify-center items-center mb-4'>
-                                        <BriefcaseIcon class="w-16 h-16 text-green-500 dark:text-green-400" />
-                                    </div>
-                                    <strong class="block text-xl mb-2 dark:text-white text-black">Developing the Creative Economy</strong>
-                                    <p className='text-gray-400'>
-                                        Contribute significantly to economic growth through the sustainable development of creative businesses and the creation of new jobs.
-                                    </p>
-                                </div>
-                                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg text-black dark:text-white">
-                                    <div className='flex justify-center items-center mb-4'>
-                                        <GlobeAltIcon class="w-16 h-16 text-red-500 dark:text-red-400" />
-                                    </div>
-                                    <strong class="block text-xl mb-2 dark:text-white text-black">Building Cultural Identity</strong>
-                                    <p className='text-gray-400'>
-                                        Strengthen and develop local cultural identity through world-class creative works.
-                                    </p>
-                                </div>
-                                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg text-black dark:text-white">
-                                    <div className='flex justify-center items-center mb-4'>
-                                        <HeartIcon class="w-16 h-16 text-yellow-500 dark:text-yellow-400" />
-                                    </div>
-                                    <strong class="block text-xl mb-2 dark:text-white text-black">Improving Quality of Life</strong>
-                                    <p className='text-gray-400'>
-                                        Provide a positive impact on the quality of life of society through innovative and beneficial creative products and services.
-                                    </p>
-                                </div>
-                                <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg text-black dark:text-white">
-                                    <div className='flex justify-center items-center mb-4'>
-                                        <StarIcon class="w-16 h-16 text-purple-200 dark:text-purple-200" />
-                                    </div>
-                                    <strong class="block text-xl mb-2 dark:text-white text-black">Becoming Global Inspiration</strong>
-                                    <p className='text-gray-400'>
-                                        Inspire and empower the global creative community through collaboration and exchange of ideas.
-                                    </p>
-                                </div>
+                            <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg text-black dark:text-white">
+                                <ul class="list-none space-y-4">
+                                    <li class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4 p-4 border-b border-gray-200 dark:border-gray-700">
+                                        <div class="flex justify-center items-center w-full md:block md:justify-normal md:w-fit">
+                                            <SparklesIcon class="md:w-6 md:h-6 w-32 h-32 text-blue-500 dark:text-blue-400" />
+                                        </div>
+                                        <div class="text-gray-400">
+                                            <strong class="block text-xl sm:text-2xl dark:text-white text-black">Becoming Innovation Leaders</strong>
+                                            Realize themselves as pioneers of innovation in the creative industry by creating unique and highly competitive products and services.
+                                        </div>
+                                    </li>
+                                    <li class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4 p-4 border-b border-gray-200 dark:border-gray-700">
+                                        <div class="flex justify-center items-center w-full md:block md:justify-normal md:w-fit">
+                                            <BriefcaseIcon class="md:w-6 md:h-6 w-32 h-32 text-green-500 dark:text-green-400" />
+                                        </div>
+                                        <div class="text-gray-400">
+                                            <strong class="block text-xl sm:text-2xl dark:text-white text-black">Developing the Creative Economy</strong>
+                                            Contribute significantly to economic growth through the sustainable development of creative businesses and the creation of new jobs.
+                                        </div>
+                                    </li>
+                                    <li class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4 p-4 border-b border-gray-200 dark:border-gray-700">
+                                        <div class="flex justify-center items-center w-full md:block md:justify-normal md:w-fit">
+                                            <GlobeAltIcon class="md:w-6 md:h-6 w-32 h-32 text-red-500 dark:text-red-400" />
+                                        </div>
+                                        <div class="text-gray-400">
+                                            <strong class="block text-xl sm:text-2xl dark:text-white text-black">Building Cultural Identity</strong>
+                                            Strengthen and develop local cultural identity through world-class creative works.
+                                        </div>
+                                    </li>
+                                    <li class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4 p-4 border-b border-gray-200 dark:border-gray-700">
+                                        <div class="flex justify-center items-center w-full md:block md:justify-normal md:w-fit">
+                                            <HeartIcon class="md:w-6 md:h-6 w-32 h-32 text-yellow-500 dark:text-yellow-400" />
+                                        </div>
+                                        <div class="text-gray-400">
+                                            <strong class="block text-xl sm:text-2xl dark:text-white text-black">Improving Quality of Life</strong>
+                                            Provide a positive impact on the quality of life of society through innovative and beneficial creative products and services.
+                                        </div>
+                                    </li>
+                                    <li class="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4 p-4">
+                                        <div class="flex justify-center items-center w-full md:block md:justify-normal md:w-fit">
+                                            <StarIcon class="md:w-6 md:h-6 w-32 h-32 text-purple-200 dark:text-purple-200" />
+                                        </div>
+                                        <div class="text-gray-400">
+                                            <strong class="block text-xl sm:text-2xl dark:text-white text-black">Becoming Global Inspiration</strong>
+                                            Inspire and empower the global creative community through collaboration and exchange of ideas.
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
                         </section>
 
@@ -301,6 +303,7 @@ function Home() {
                         </div>
                     </section>
 
+                    {/*
                     <section id="article" className='p-5 md:px-32 lg:px-64 xl:px-96 py-32 bg-purple-200 bg-opacity-30'>
                         <h2 className="text-4xl font-bold my-5 dark:text-white text-black text-center mb-32">Article</h2>
                         <div className='flex flex-col xl:flex-row'>
@@ -313,6 +316,7 @@ function Home() {
                             </div>
                         </div>
                     </section>
+                    */}
                 </>
             )}
         </AppLayouts>

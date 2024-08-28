@@ -6,6 +6,11 @@ import { CalendarIcon, LightBulbIcon, UsersIcon, MusicalNoteIcon, RadioIcon, TvI
 
 const milestones = [
   {
+    title: 'AFENT registered as Limited Company and become Ladon Entertainment (Ladent)',
+    date: '2021',
+    icon: <CalendarIcon className="h-6 w-6 text-white" />,
+  },
+  {
     title: 'BRAND ACTIVATION',
     description: 'Work with local and international brands as digital campaign marketing.',
     date: '2021',
@@ -42,7 +47,7 @@ const milestones = [
     icon: <TvIcon className="h-6 w-6 text-white" />,
   },
   {
-    title: 'TV PARTNERSHIP & MEDIA PLANNER',
+    title: 'AFENT Established in South Jakarta',
     description: 'Manage TVC brand, artist management as TV host, and production house.',
     date: '2010',
     icon: <FilmIcon className="h-6 w-6 text-white" />,
@@ -59,7 +64,7 @@ const Timeline = () => {
           iconStyle={{ background: '#61b8ff', color: '#fff' }}
           icon={milestone.icon}
         >
-          <h3 className="text-xl font-semibold">{milestone.title}</h3>
+          <h1 className="text-md font-bold">{milestone.title}</h1>
           <p>{milestone.description}</p>
         </VerticalTimelineElement>
       ))}

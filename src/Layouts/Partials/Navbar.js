@@ -316,6 +316,7 @@ const Navbar = ({ title }) => {
                       >
                         Clients
                       </a>
+                      {/*
                       <a
                         href="#article"
                         className="hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300"
@@ -323,6 +324,7 @@ const Navbar = ({ title }) => {
                       >
                         Article
                       </a>
+                      */}
                 </>
               ) : (
                 <>
@@ -354,6 +356,7 @@ const Navbar = ({ title }) => {
                       >
                           Clients
                       </Link>
+                      {/*
                       <Link
                           to="/home#article"
                           className="hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300"
@@ -361,6 +364,7 @@ const Navbar = ({ title }) => {
                       >
                           Article
                       </Link>
+                      */}
                 </>
               )}
 
