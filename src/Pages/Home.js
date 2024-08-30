@@ -56,13 +56,13 @@ function Home() {
             ) : (
                 <>
                     <section id="profile" className="bg-purple-200 bg-opacity-30 p-5 md:px-32 lg:px-64 xl:px-96">
-                        <h2 className="text-5xl md:text-6xl font-bold dark:text-white text-black md:mt-32 md:mb-10">LADON Entertainment</h2>
+                        <h2 className="text-5xl md:text-6xl font-bold dark:text-white text-black md:mt-32 md:mb-10">Ladon Entertainment</h2>
                         <div className='text-lg mt-10'>
                             <p class="dark:text-white text-black leading-relaxed">
-                                LADON Entertainment Indonesia (LADENT) is a teamwork that operates in the creative industry including event service, brand activation, media planner, artist management, and KOL specialist. Founded in 2015, it focuses on artist management by collaborating in various television programs, radio, and production houses, which then expanded into digitalization such as music aggregators, creative content, and agencies.
+                                Ladon Entertainment Indonesia (LADENT) is a teamwork that operates in the creative industry including event service, brand activation, media planner, artist management, and KOL specialist. Founded in 2015, it focuses on artist management by collaborating in various television programs, radio, and production houses, which then expanded into digitalization such as music aggregators, creative content, and agencies.
                             </p>
                             <p class="dark:text-white text-black leading-relaxed mt-4">
-                                The increasing number of Indonesian people who are aware of technology and social media is paying attention to foreign products to market their products in Indonesia. AF Entertainment (AFENT) not only helps local brands to promote their products but also answers the challenges of several products from abroad such as from America, China, and Singapore as brand activation.
+                                The increasing number of Indonesian people who are aware of technology and social media is paying attention to foreign products to market their products in Indonesia. Ladon Entertainment (LADENT) not only helps local brands to promote their products but also answers the challenges of several products from abroad such as from America, China, and Singapore as brand activation.
                             </p>
                             <p class="dark:text-white text-black leading-relaxed mt-4">
                                 Some local products that we have collaborated with include BCA, Bank Mandiri, Scarlett Whitening, Polytron, Smartfren, Xiaomi, and others. Meanwhile, foreign products are the Omi, Unicraft World, Holla, and Litmatch applications.

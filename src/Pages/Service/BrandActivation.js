@@ -25,7 +25,18 @@ function BrandActivation() {
                         </p>
                     </div>
                 </section>
-
+                <div className="flex flex-col lg:flex-row lg:space-x-4 w-full">
+                    <img
+                        className="w-full h-auto mb-4 lg:mb-0 lg:w-1/2 rounded-lg"
+                        src="/assets/images/brand-activation-1.png"
+                        alt="Brand Activation 1"
+                    />
+                    <img
+                        className="w-full h-auto lg:w-1/2 rounded-lg"
+                        src="/assets/images/brand-activation-2.png"
+                        alt="Brand Activation 2"
+                    />
+                </div>
             </div>
         </AppLayouts>
     );

@@ -87,9 +87,10 @@ function Contact() {
                                 <EnvelopeIcon className='w-6 h-6 dark:text-gray-200 text-gray-800 mr-3' />
                                 <div>
                                     <h2 className='uppercase text-xl font-semibold dark:text-gray-100 text-gray-800'>Management</h2>
-                                    <p className='dark:text-gray-300 text-gray-600'>Email: <a href='mailto:alex@ladent.id' className='text-blue-500'>alex@ladent.id</a></p>
-                                    <p className='dark:text-gray-300 text-gray-600'>WhatsApp: <a href='https://wa.me/6287871717187' className='text-blue-500'>+62 878 717171 87</a></p>
-                                    <p className='dark:text-gray-300 text-gray-600'>Instagram: <a href='https://www.instagram.com/ladent.id' className='text-blue-500'>@ladent.id</a></p>
+                                    <p className='dark:text-gray-300 text-gray-600'>Email: <a href='mailto:alex@ladent.id' target='_blank' className='text-blue-500' rel="noreferrer">alex@ladent.id</a></p>
+                                    <p className='dark:text-gray-300 text-gray-600'>WhatsApp: <a href='https://wa.me/6287871717187' target='_blank' className='text-blue-500' rel="noreferrer">+62 878 717171 87</a></p>
+                                    <p className='dark:text-gray-300 text-gray-600'>Instagram: <a href='https://www.instagram.com/ladent.id' target='_blank' className='text-blue-500' rel="noreferrer">@ladent.id</a></p>
+                                    <p className='dark:text-gray-300 text-gray-600'>Agency: <a href='http://www.instagram.com/afent.id' target='_blank' className='text-blue-500' rel="noreferrer">@afent.id</a></p>
                                 </div>
                             </div>
 

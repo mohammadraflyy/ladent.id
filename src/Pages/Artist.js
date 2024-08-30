@@ -22,7 +22,17 @@ function Artist() {
                 '2021 Duhai Kekasihku',
                 '2020 Walaupun Bukan Karena (WBK)',
                 '2017 Album : Hanya Untukmu',
-                'Java Ver. Leksa Taun, Katresnan, Ojo Takon Aku Iki Sapa, Tanpa Watesan, Tanpa Awakmu, Duhai Katresnan, Magnet Katresnan',
+                {
+                    java: [
+                        'Leksa Taun',
+                        'Katresnan',
+                        'Ojo Takon Aku Iki Sapa',
+                        'Tanpa Watesan',
+                        'Tanpa Awakmu',
+                        'Duhai Katresnan',
+                        'Magnet Katresnan',
+                    ]
+                }
             ],
             filmography: [
                 'Assalamulaikum Beijing',
@@ -126,8 +136,8 @@ function Artist() {
                 <div className='w-full h-full p-4 my-5 rounded-r-xl border-gray-300 overflow-auto'>
                     {selectedArtist ? (
                         <>
-                            <div className='flex justify-center items-center md:border-b border-gray-300 dark:border-gray-700'>
-                                <div className='text-center mb-2'>
+                            <div className='flex justify-center items-center md:border-b-2 border-dashed border-gray-300 dark:border-gray-700'>
+                                <div className='text-center mb-10'>
                                     <h2 className='text-xl font-bold dark:text-gray-100 text-gray-700'>{selectedArtist.name}</h2>
                                     <p className='font-light text-sm dark:text-gray-100 text-gray-700'>{selectedArtist.birthdate}</p>
                                     {selectedArtist.socialLinks && (
@@ -156,13 +166,23 @@ function Artist() {
                                     )}
                                 </div>
                             </div>
-                            <div className="mt-4">
+                            <div className="mt-10">
                                 <h3 className="font-bold text-sm dark:text-gray-100 text-gray-700">DISCOGRAPHY</h3>
                                 <ul className="space-y-1 text-sm dark:text-gray-100 text-gray-700">
                                     {selectedArtist.discography.length > 0 ? (
-                                        selectedArtist.discography.map((item, index) => (
-                                            <li key={index}>{item}</li>
-                                        ))
+                                        selectedArtist.discography.map((item, index) => {
+                                            if (typeof item === 'string') {
+                                                return <li key={index}>{item}</li>;
+                                            } else if (typeof item === 'object') {
+                                                return Object.keys(item).map((key, subIndex) => (
+                                                    <li key={`${index}-${subIndex}`}>
+                                                        <p className="font-bold capitalize">{key} Ver. : <span className='font-normal'>{item[key].join(', ')}</span></p>
+                                                    </li>
+                                                ));
+                                            } else {
+                                                return null;
+                                            }
+                                        })
                                     ) : (
                                         <li>-</li>
                                     )}
