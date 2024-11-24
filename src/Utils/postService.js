@@ -1,9 +1,7 @@
 import axios from 'axios';
+import config from './config';
 
-//const API_BASE_URL = 'http://localhost:8000';
-const API_BASE_URL = 'https://api.ladent.id';
-
-export { API_BASE_URL };
+const { API_BASE_URL } = config;
 
 export const fetchPostBySlug = async (slug) => {
     try {

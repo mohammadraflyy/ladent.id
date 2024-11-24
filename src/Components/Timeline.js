@@ -7,7 +7,7 @@ import { CalendarIcon, LightBulbIcon, UsersIcon, MusicalNoteIcon, RadioIcon, TvI
 const milestones = [
   {
     title: 'AFENT registered as Limited Company and become Ladon Entertainment (Ladent)',
-    date: '2021',
+    date: '2024',
     icon: <CalendarIcon className="h-6 w-6 text-white" />,
   },
   {
@@ -63,8 +63,9 @@ const Timeline = () => {
           date={milestone.date}
           iconStyle={{ background: '#61b8ff', color: '#fff' }}
           icon={milestone.icon}
+          dateClassName='text-blue-500'
         >
-          <h1 className="text-md font-bold">{milestone.title}</h1>
+          <h1 className="font-bold">{milestone.title}</h1>
           <p>{milestone.description}</p>
         </VerticalTimelineElement>
       ))}

@@ -55,13 +55,13 @@ function LandingPage() {
             </main>
             <footer className="relative w-full text-center z-10 p-4 bg-transparent mb-20">
                 <div className="flex flex-wrap font-semibold justify-center gap-4 text-sm sm:text-base md:text-lg lg:text-xl text-gray-400">
-                    <span className="w-full sm:w-auto">EVENT MANAGEMENT</span>
+                    <span className="w-full sm:w-auto">EVENT SERVICE</span>
                     <span className="hidden md:block border-l border-gray-300 mx-2 h-6 md:h-auto" />
                     <span className="w-full sm:w-auto">MEDIA PLANNER</span>
                     <span className="hidden md:block border-l border-gray-300 mx-2 h-6 md:h-auto" />
                     <span className="w-full sm:w-auto">BRAND ACTIVATION</span>
                     <span className="hidden md:block border-l border-gray-300 mx-2 h-6 md:h-auto" />
-                    <span className="w-full sm:w-auto">PRODUCTION</span>
+                    <span className="w-full sm:w-auto">ARTIST MANAGEMENT</span>
                 </div>
                 <div className="mt-5 font-light text-gray-400">
                     Ladon Entertainment © 2024 All Right Reserved

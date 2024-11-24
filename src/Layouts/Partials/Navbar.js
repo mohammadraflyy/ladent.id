@@ -101,6 +101,7 @@ const Navbar = ({ title }) => {
                       >
                         Clients
                       </a>
+                      {/*
                       <a
                         href="#article"
                         className="hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300"
@@ -108,6 +109,7 @@ const Navbar = ({ title }) => {
                       >
                         Article
                       </a>
+                      */}
                     </>
                   ) : (
                     <>
@@ -139,6 +141,7 @@ const Navbar = ({ title }) => {
                       >
                           Clients
                       </Link>
+                      {/*
                       <Link
                           to="/home#article"
                           className="hover:text-gray-300 block px-4 py-2 dark:text-white text-gray-900 hover:bg-gray-600 transition-colors duration-300"
@@ -146,6 +149,7 @@ const Navbar = ({ title }) => {
                       >
                           Article
                       </Link>
+                      */}
                     </>
                   )}
               </div>
@@ -209,6 +213,13 @@ const Navbar = ({ title }) => {
               </Link>
             </div>
           </div>
+
+          <Link
+            to="/podcast"
+            className={`${isActive(['/podcast'])} hover:text-gray-300 dark:text-white text-gray-900 rounded-xl hover:bg-gray-700 px-3 py-1 transition-colors duration-300`}
+          >
+            Podcast
+          </Link>
 
           <Link
             to="/artist"

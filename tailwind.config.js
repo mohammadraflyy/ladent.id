@@ -20,6 +20,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['figtree'],
+        alerta: ['alerta-stencil'],
       },
     },
   },

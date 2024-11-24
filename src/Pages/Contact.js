@@ -89,8 +89,10 @@ function Contact() {
                                     <h2 className='uppercase text-xl font-semibold dark:text-gray-100 text-gray-800'>Management</h2>
                                     <p className='dark:text-gray-300 text-gray-600'>Email: <a href='mailto:alex@ladent.id' target='_blank' className='text-blue-500' rel="noreferrer">alex@ladent.id</a></p>
                                     <p className='dark:text-gray-300 text-gray-600'>WhatsApp: <a href='https://wa.me/6287871717187' target='_blank' className='text-blue-500' rel="noreferrer">+62 878 717171 87</a></p>
-                                    <p className='dark:text-gray-300 text-gray-600'>Instagram: <a href='https://www.instagram.com/ladent.id' target='_blank' className='text-blue-500' rel="noreferrer">@ladent.id</a></p>
-                                    <p className='dark:text-gray-300 text-gray-600'>Agency: <a href='http://www.instagram.com/afent.id' target='_blank' className='text-blue-500' rel="noreferrer">@afent.id</a></p>
+                                    <p className='dark:text-gray-300 text-gray-600'>Instagram: <a href='https://instagram.com/ladonentertainment' target='_blank' className='text-blue-500' rel="noreferrer">@ladonentertainment</a></p>
+                                    <p className='dark:text-gray-300 text-gray-600'>Tiktok: <a href='https://tiktok.com/@LadonEntertainment' target='_blank' className='text-blue-500' rel="noreferrer">@LadonEntertainment</a></p>
+                                    <p className='dark:text-gray-300 text-gray-600'>Youtube: <a href='http://youtube.com/@LadonEntertainment' target='_blank' className='text-blue-500' rel="noreferrer">Ladon Entertainment</a></p>
+                                    <p className='dark:text-gray-300 text-gray-600'>Agency: <a href='http://instagram.com/afent.id' target='_blank' className='text-blue-500' rel="noreferrer">@afent.id</a></p>
                                 </div>
                             </div>
 
