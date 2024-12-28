@@ -441,6 +441,13 @@ const Navbar = ({ title }) => {
           </div>
         </div>
         <Link
+          to="/podcast"
+          className={`${isActive(['/podcast'])} block px-4 py-2 my-2 hover:bg-gray-200 hover:text-black rounded-lg`}
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          Podcast
+        </Link>
+        <Link
           to="/artist"
           className={`${isActive(['/artist'])} block px-4 py-2 my-2 hover:bg-gray-200 hover:text-black rounded-lg`}
           onClick={() => setIsMobileMenuOpen(false)}
