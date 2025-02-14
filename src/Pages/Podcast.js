@@ -1,28 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import AppLayouts from '../Layouts/AppLayouts';
 
 const YOUTUBE_API_KEY = 'AIzaSyAqd_I8T49tFT13I7WXh6cinFhMMpimZWc';
 const CHANNEL_ID = 'UCR5KBvywfC1NKfIPPN3pGsw';
-const MAX_RESULTS = 5;
+const MAX_RESULTS = 50; 
 
 function Podcast() {
-    const [videos, setVideos] = useState([]);
     const [filteredVideos, setFilteredVideos] = useState([]);
     const [category, setCategory] = useState('All');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [isCategoryLoading, setIsCategoryLoading] = useState(false);
-    const [nextPageToken, setNextPageToken] = useState(null);
-    const [prevPageToken, setPrevPageToken] = useState(null);
 
-    const fetchYouTubeVideos = async (pageToken = '') => {
+    const fetchYouTubeVideos = useCallback(async (selectedCategory) => {
         setLoading(true);
+        let allVideos = [];
+        let nextPageToken = '';
         try {
-            const response = await axios.get(
-                `https://www.googleapis.com/youtube/v3/search`,
-                {
+            do {
+                const response = await axios.get(`https://www.googleapis.com/youtube/v3/search`, {
                     params: {
                         part: 'snippet',
                         channelId: CHANNEL_ID,
@@ -30,19 +28,19 @@ function Podcast() {
                         order: 'date',
                         type: 'video',
                         key: YOUTUBE_API_KEY,
-                        pageToken: pageToken,
+                        pageToken: nextPageToken,
+                        q: selectedCategory === 'All' ? '' : selectedCategory,
                     },
-                }
-            );
-            console.log(response);
-            const fetchedVideos = response.data.items.filter(video => !video.snippet.title.includes('#short'));
-            setVideos(fetchedVideos);
-            console.log(fetchedVideos);
-            setFilteredVideos(fetchedVideos);
-            setNextPageToken(response.data.nextPageToken || null);
-            setPrevPageToken(response.data.prevPageToken || null);
+                }, []);
+
+                const fetchedVideos = response.data.items.filter(video => !video.snippet.title.includes('#short'));
+                allVideos = [...allVideos, ...fetchedVideos];
+                nextPageToken = response.data.nextPageToken || '';
+            } while (nextPageToken);
+
+            setFilteredVideos(filterVideosByCategory(allVideos, selectedCategory));
         } catch (err) {
-            if (err.response.status === 403) {
+            if (err.response?.status === 403) {
                 setError('Kuota harian terlampaui. Silakan coba lagi besok.');
             } else {
                 setError('Gagal mengambil video. Silakan coba lagi nanti.');
@@ -50,27 +48,24 @@ function Podcast() {
         } finally {
             setLoading(false);
         }
-    };
+    }, []);
 
     useEffect(() => {
-        fetchYouTubeVideos();
-    }, []);
+        fetchYouTubeVideos(category);
+    }, [category, fetchYouTubeVideos]);
+
+    const filterVideosByCategory = (videos, selectedCategory) => {
+        if (selectedCategory === 'All') return videos.filter(video => !video.snippet.title.includes('Ladon Entertainment'));
+        if (selectedCategory === 'PoTW') return videos.filter(video => video.snippet.title.includes('PoTW'));
+        if (selectedCategory === 'Sam Hendy') return videos.filter(video => video.snippet.title.includes('Sam Hendy'));
+        return videos;
+    };
 
     const handleCategoryChange = (selectedCategory) => {
         setCategory(selectedCategory);
         setIsCategoryLoading(true);
         setTimeout(() => {
-            if (selectedCategory === 'All') {
-                setFilteredVideos(videos);
-            } else if (selectedCategory === 'PoTW') {
-                setFilteredVideos(videos.filter((video) =>
-                    video.snippet.title.includes('PoTW')
-                ));
-            } else if (selectedCategory === 'Sam Hendy') {
-                setFilteredVideos(videos.filter((video) =>
-                    video.snippet.title.includes('Sam Hendy')
-                ));
-            }
+            fetchYouTubeVideos(selectedCategory);
             setIsCategoryLoading(false);
         }, 500);
     };
@@ -87,11 +82,7 @@ function Podcast() {
     if (loading) {
         return (
             <AppLayouts title="Podcast">
-                <motion.div
-                    className="text-center py-10"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                >
+                <motion.div className="text-center py-10" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                     Loading podcasts...
                 </motion.div>
             </AppLayouts>
@@ -100,14 +91,14 @@ function Podcast() {
 
     if (error) {
         return (
-            <AppLayouts title="">
+            <AppLayouts title="Podcast">
                 <div className="text-center py-10 text-red-500">Error: {error}</div>
             </AppLayouts>
         );
     }
 
     return (
-        <AppLayouts title="">
+        <AppLayouts title="Podcast">
             <div className="max-w-4xl mx-auto md:p-10 dark:bg-gray-900 bg-gray-100 my-5 md:dark:bg-gray-800 md:bg-white mb-10 rounded-xl">
                 <div className="p-5">
                     <h2 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">
@@ -116,24 +107,17 @@ function Podcast() {
 
                     {/* Category Selector */}
                     <div className="flex justify-center mb-6">
-                        <button
-                            onClick={() => handleCategoryChange('All')}
-                            className={`px-4 py-2 rounded-l-md ${category === 'All' ? 'bg-blue-500 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100'}`}
-                        >
-                            All
-                        </button>
-                        <button
-                            onClick={() => handleCategoryChange('PoTW')}
-                            className={`px-4 py-2 ${category === 'PoTW' ? 'bg-blue-500 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100'}`}
-                        >
-                            PoTW
-                        </button>
-                        <button
-                            onClick={() => handleCategoryChange('Sam Hendy')}
-                            className={`px-4 py-2 rounded-r-md ${category === 'Sam Hendy' ? 'bg-blue-500 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100'}`}
-                        >
-                            Sam Hendy
-                        </button>
+                        {['All', 'PoTW', 'Sam Hendy'].map((cat) => (
+                            <button
+                                key={cat}
+                                onClick={() => handleCategoryChange(cat)}
+                                className={`px-4 py-2 ${
+                                    category === cat ? 'bg-blue-500 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100'
+                                } ${cat === 'All' ? 'rounded-l-md' : cat === 'Sam Hendy' ? 'rounded-r-md' : ''}`}
+                            >
+                                {cat}
+                            </button>
+                        ))}
                     </div>
 
                     {/* Videos Count */}
@@ -145,11 +129,7 @@ function Podcast() {
 
                     {/* Videos Grid */}
                     {isCategoryLoading ? (
-                        <motion.div
-                            className="text-center py-10"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                        >
+                        <motion.div className="text-center py-10" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                             Switching category...
                         </motion.div>
                     ) : (
@@ -192,26 +172,6 @@ function Podcast() {
                             ))}
                         </motion.div>
                     )}
-
-                    {/* Pagination Controls */}
-                    <div className="flex justify-between mt-6">
-                        {prevPageToken && (
-                            <button
-                                onClick={() => fetchYouTubeVideos(prevPageToken)}
-                                className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 rounded-md"
-                            >
-                                Previous
-                            </button>
-                        )}
-                        {nextPageToken && (
-                            <button
-                                onClick={() => fetchYouTubeVideos(nextPageToken)}
-                                className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 rounded-md"
-                            >
-                                Next
-                            </button>
-                        )}
-                    </div>
                 </div>
             </div>
         </AppLayouts>
